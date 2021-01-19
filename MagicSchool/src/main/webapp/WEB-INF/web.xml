@@ -5,7 +5,7 @@
          version="4.0">
         <servlet-mapping>
             <servlet-name>default</servlet-name>
-            <url-pattern>/public/*</url-pattern>
+            <url-pattern>/Public/*</url-pattern>
         </servlet-mapping>
         <!--Webjars Servlet-->
         <servlet>
