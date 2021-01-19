@@ -16,6 +16,26 @@
                     integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
             <script src="${pageContext.request.contextPath}/public/owlcarousel/owl.carousel.min.js"></script>
     </jsp:attribute>
+    <jsp:attribute name="js">
+        <script>
+            $('.owl-carousel').owlCarousel({
+                loop: true,
+                margin: 10,
+                nav: true,
+                responsive: {
+                    0: {
+                        items: 1
+                    },
+                    600: {
+                        items: 2
+                    },
+                    1000: {
+                        items: 4
+                    }
+                }
+            })
+        </script>
+    </jsp:attribute>
     <jsp:body>
         <div class="container">
             <div class="box">
@@ -49,25 +69,6 @@
             </div>
         </div>
     </jsp:body>
-    <jsp:attribute name="js">
-        <script>
-            $('.owl-carousel').owlCarousel({
-                loop: true,
-                margin: 10,
-                nav: true,
-                responsive: {
-                    0: {
-                        items: 1
-                    },
-                    600: {
-                        items: 2
-                    },
-                    1000: {
-                        items: 4
-                    }
-                }
-            })
-        </script>
-    </jsp:attribute>
+
 </t:main>
 
