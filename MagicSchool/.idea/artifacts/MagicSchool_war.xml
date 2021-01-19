@@ -1,0 +1,14 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="MagicSchool:war">
+    <output-path>$PROJECT_DIR$/target</output-path>
+    <properties id="maven-jee-properties">
+      <options>
+        <module>MagicSchool</module>
+        <packaging>war</packaging>
+      </options>
+    </properties>
+    <root id="archive" name="MagicSchool-1.0-SNAPSHOT.war">
+      <element id="artifact" artifact-name="MagicSchool:war exploded" />
+    </root>
+  </artifact>
+</component>
