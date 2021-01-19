@@ -7,11 +7,12 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 public class ServletUtils {
-    public static void  forward(String viewPath, HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    public static void forward(String viewPath, HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         RequestDispatcher rd = request.getRequestDispatcher(viewPath);
         rd.forward(request,response);
     }
-    public static void redirect(String url,HttpServletRequest request,HttpServletResponse response) throws IOException {
-       response.sendRedirect(request.getContextPath() + url);
+
+    public static void redirect(String url, HttpServletRequest request, HttpServletResponse response) throws IOException {
+        response.sendRedirect(request.getContextPath()+url);
     }
 }

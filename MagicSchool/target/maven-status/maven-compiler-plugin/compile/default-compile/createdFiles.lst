@@ -1,1 +1,2 @@
-com\example\MagicSchool\HelloServlet.class
+utils\DBUtils.class
+utils\ServletUtils.class
