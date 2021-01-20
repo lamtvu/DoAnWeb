@@ -1,2 +1,6 @@
-utils\DBUtils.class
+controllers\DefaultServlet.class
 utils\ServletUtils.class
+controllers\HomeServlet.class
+beans\User.class
+utils\DBUtils.class
+models\UserModel.class
