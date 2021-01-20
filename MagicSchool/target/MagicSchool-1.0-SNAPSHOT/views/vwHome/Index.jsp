@@ -8,6 +8,43 @@
 
 
 <t:main>
+<<<<<<< HEAD
+=======
+    <jsp:attribute name="css">
+         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+            <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+            <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+            <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+            <link rel="stylesheet"
+                  href="${pageContext.request.contextPath}/public/owlcarousel/assets/owl.carousel.min.css">
+            <link rel="stylesheet"
+                  href="${pageContext.request.contextPath}/public/owlcarousel/assets/owl.theme.default.min.css">
+            <script src="https://code.jquery.com/jquery-3.5.1.js"
+                    integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
+            <script src="${pageContext.request.contextPath}/public/owlcarousel/owl.carousel.min.js"></script>
+    </jsp:attribute>
+    <jsp:attribute name="js">
+        <script>
+            $('.owl-carousel').owlCarousel({
+                loop: true,
+                margin: 10,
+                nav: true,
+                responsive: {
+                    0: {
+                        items: 1
+                    },
+                    600: {
+                        items: 2
+                    },
+                    1000: {
+                        items: 4
+                    }
+                }
+            })
+        </script>
+    </jsp:attribute>
+>>>>>>> 847944f977e4d844438998145eb95648cb2cee72
     <jsp:body>
         <div class="container">
             <div class="box">
@@ -57,6 +94,10 @@
             </div>
         </div>
     </jsp:body>
+<<<<<<< HEAD
+=======
+
+>>>>>>> 847944f977e4d844438998145eb95648cb2cee72
 </t:main>
 
 

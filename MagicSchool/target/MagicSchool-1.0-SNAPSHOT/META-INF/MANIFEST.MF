@@ -1,5 +1,10 @@
 Manifest-Version: 1.0
 Created-By: IntelliJ IDEA
+<<<<<<< HEAD
 Built-By: Nguyen Duy Khang
 Build-Jdk: 15.0.2
+=======
+Built-By: lamtv
+Build-Jdk: version 11.0.9
+>>>>>>> 847944f977e4d844438998145eb95648cb2cee72
 
