@@ -8,8 +8,6 @@
 
 
 <t:main>
-<<<<<<< HEAD
-=======
     <jsp:attribute name="css">
          <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
             <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
@@ -44,7 +42,6 @@
             })
         </script>
     </jsp:attribute>
->>>>>>> 847944f977e4d844438998145eb95648cb2cee72
     <jsp:body>
         <div class="container">
             <div class="box">
@@ -94,10 +91,6 @@
             </div>
         </div>
     </jsp:body>
-<<<<<<< HEAD
-=======
-
->>>>>>> 847944f977e4d844438998145eb95648cb2cee72
 </t:main>
 
 

@@ -3,17 +3,14 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd"
          version="4.0">
-<<<<<<< HEAD
     <servlet-mapping>
         <servlet-name>default</servlet-name>
         <url-pattern>/public/* </url-pattern>
     </servlet-mapping>
-=======
         <servlet-mapping>
             <servlet-name>default</servlet-name>
             <url-pattern>/Public/*</url-pattern>
         </servlet-mapping>
->>>>>>> 847944f977e4d844438998145eb95648cb2cee72
         <!--Webjars Servlet-->
         <servlet>
             <servlet-name>WebjarsServlet</servlet-name>

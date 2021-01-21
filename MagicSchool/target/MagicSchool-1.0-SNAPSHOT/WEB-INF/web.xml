@@ -7,6 +7,10 @@
         <servlet-name>default</servlet-name>
         <url-pattern>/public/* </url-pattern>
     </servlet-mapping>
+        <servlet-mapping>
+            <servlet-name>default</servlet-name>
+            <url-pattern>/Public/*</url-pattern>
+        </servlet-mapping>
         <!--Webjars Servlet-->
         <servlet>
             <servlet-name>WebjarsServlet</servlet-name>

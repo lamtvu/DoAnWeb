@@ -1,6 +1,12 @@
-C:\Users\Nguyen Duy Khang\Desktop\New folder\DoAnWeb\MagicSchool\src\main\java\utils\DBUtils.java
-C:\Users\Nguyen Duy Khang\Desktop\New folder\DoAnWeb\MagicSchool\src\main\java\utils\ServletUtils.java
-C:\Users\Nguyen Duy Khang\Desktop\New folder\DoAnWeb\MagicSchool\src\main\java\models\UserModel.java
-C:\Users\Nguyen Duy Khang\Desktop\New folder\DoAnWeb\MagicSchool\src\main\java\controllers\HomeServlet.java
-C:\Users\Nguyen Duy Khang\Desktop\New folder\DoAnWeb\MagicSchool\src\main\java\beans\User.java
-C:\Users\Nguyen Duy Khang\Desktop\New folder\DoAnWeb\MagicSchool\src\main\java\controllers\DefaultServlet.java
+F:\DoAnWeb\MagicSchool\src\main\java\beans\Evaluate.java
+F:\DoAnWeb\MagicSchool\src\main\java\models\CourseModel.java
+F:\DoAnWeb\MagicSchool\src\main\java\controllers\CourseServlet.java
+F:\DoAnWeb\MagicSchool\src\main\java\beans\Course.java
+F:\DoAnWeb\MagicSchool\src\main\java\controllers\DefaultServlet.java
+F:\DoAnWeb\MagicSchool\src\main\java\beans\User.java
+F:\DoAnWeb\MagicSchool\src\main\java\models\UserModel.java
+F:\DoAnWeb\MagicSchool\src\main\java\utils\DBUtils.java
+F:\DoAnWeb\MagicSchool\src\main\java\controllers\AccountServlet.java
+F:\DoAnWeb\MagicSchool\src\main\java\controllers\HomeServlet.java
+F:\DoAnWeb\MagicSchool\src\main\java\controllers\UserCategoryServlet.java
+F:\DoAnWeb\MagicSchool\src\main\java\utils\ServletUtils.java
