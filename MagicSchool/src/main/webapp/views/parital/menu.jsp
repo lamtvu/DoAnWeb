@@ -7,7 +7,7 @@
         <i class="fa fa-bars" aria-hidden="true"></i>
     </button>
     <div class="logo-magic-school ml-3" style="width:50px;height:40px;color:transparent">magicSchool</div>
-    <a href="#" class="logo-text-magic-school">MagicSchool</a>
+    <a href="${pageContext.request.contextPath}/Home" class="logo-text-magic-school">MagicSchool</a>
     <div class="dropdown-magic-school h-100">
         <p class="menu-text-magic-school dropdown-title-magic-school">Categories</p>
         <ul class="dropdown-content-magic-school list-unstyled" style="width:250px;height:600px;top:70px">
@@ -57,16 +57,23 @@
             </a>
         </div>
     </div>
-    <a class="menu-text-magic-school ml-3 mr-3" style="font-size: 28px;">
-        <i class="fa fa-shopping-cart" aria-hidden="true"></i>
-    </a>
-    <div style="margin-left:auto; margin-right:20px;" class="d-flex justify-content-center">
+<%--    <a class="menu-text-magic-school ml-3 mr-3" style="font-size: 28px;">--%>
+<%--        <i class="fa fa-shopping-cart" aria-hidden="true"></i>--%>
+<%--    </a>--%>
+    <div style="margin-right: 10px;" class="d-flex justify-content-center">
         <c:choose>
             <c:when test="${auth}">
-                <a class="p-2 m-1" style="font-weight: bold;color: #8d8c86" href="#">
-                    <i class="fas fa-user-circle" style="font-size: 30px;"></i>
-                    Hi! ${authUser.name}
-                </a>
+                <div class="d-flex pt-3 me-3">
+                    <a class="mx-3" href="${pageContext.request.contextPath}/User/MyCourse">
+                        <i class="fas fa-book" style="font-size: 30px;color: #3742ff;"></i>
+                    </a>
+                    <a class="mx-4"href="${pageContext.request.contextPath}/User/MyWatchList">
+                        <i class="fas fa-heart" style="font-size: 30px;color: hotpink;"></i>
+                    </a>
+                    <p class="fw-bolder">
+                        Hi! ${authUser.name}
+                    </p>
+                </div>
                 <a class="btn-magic-school p-2 m-1" style="border-radius: 10px;background-color: #badc58;font-weight: 700;" href="#">Sign Out</a>
             </c:when>
             <c:otherwise>

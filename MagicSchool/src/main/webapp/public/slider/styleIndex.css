@@ -1,0 +1,251 @@
+/* Carousel */
+
+
+/* external css: flickity.css */
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: sans-serif;
+}
+
+.carousel {
+    background: #EEE;
+}
+
+.carousel-cell {
+    width: 66%;
+    height: 200px;
+    margin-right: 10px;
+    background: #8C8;
+    border-radius: 5px;
+    counter-increment: gallery-cell;
+}
+
+
+/* cell number */
+
+.carousel-cell:before {
+    display: block;
+    text-align: center;
+    content: counter(gallery-cell);
+    line-height: 200px;
+    font-size: 80px;
+    color: white;
+}
+
+
+/* Carousel */
+
+.box2 {
+    position: absolute;
+    background: linear-gradient(to left, #e056fd, #7ed6df);
+    width: 200px;
+    border-radius: 10px;
+    top: -16px;
+    left: 43%;
+    justify-content: center;
+}
+
+.box2 p {
+    text-align: center;
+    text-transform: uppercase;
+    font-weight: bolder;
+    color: white;
+    padding-top: 5px;
+}
+
+.box1 {
+    width: 100%;
+    position: relative;
+    border-top: 2px dashed rgb(206, 75, 156);
+    display: flex;
+}
+
+p {
+    padding: 0;
+    margin: 0;
+}
+
+.seller {
+    width: 60%;
+    background: #FDE594;
+    color: #563C00;
+    text-align: center;
+    border-radius: 4px;
+    font-size: 13px;
+    display: block;
+    padding: 0;
+    font-weight: 700;
+}
+
+ul {
+    list-style: none;
+}
+
+.name-course {
+    font-weight: 700;
+}
+
+.teacher {
+    font-size: 13px;
+    color: rgb(143, 140, 140);
+}
+
+.price {
+    font-weight: 700;
+    font-size: 13;
+    color: #222222;
+}
+
+.star-group {
+    font-size: 13px;
+    padding-right: 20px;
+}
+
+.stars-outer {
+    position: relative;
+    display: inline-block;
+}
+
+.stars-inner {
+    position: absolute;
+    top: 0;
+    left: 0;
+    white-space: nowrap;
+    overflow: hidden;
+    width: 0;
+}
+
+.stars-outer::before {
+    content: "\f005 \f005 \f005 \f005 \f005";
+    font-family: "Font Awesome 5 Free";
+    font-weight: 900;
+    color: #cccccc;
+}
+
+.stars-inner::before {
+    content: "\f005 \f005 \f005 \f005 \f005";
+    font-family: "Font Awesome 5 Free";
+    font-weight: 900;
+    color: #f8ce0b;
+}
+
+
+/* CSS Document */
+
+body {
+    margin: 0px;
+    padding: 0px;
+    background-color: #eef8ff;
+}
+
+a {
+    text-decoration: none;
+}
+
+.box {
+    width: 243px;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+    overflow: hidden;
+    margin: 4px;
+}
+
+.slide-img {
+    height: 135px;
+    width: 100%;
+    position: relative;
+}
+
+.slide-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    box-sizing: border-box;
+}
+
+.detail-box {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    box-sizing: border-box;
+    font-family: calibri;
+}
+
+.type {
+    display: flex;
+    flex-direction: column;
+}
+
+.type a {
+    color: #222222;
+    margin: 5px 0px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    padding-right: 8px;
+}
+
+.overlay {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    height: 100%;
+    background-color: rgba(100, 101, 139, 0.6);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.buy-btn {
+    width: 160px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #FFFFFF;
+    color: #252525;
+    font-weight: 700;
+    letter-spacing: 1px;
+    font-family: calibri;
+    border-radius: 20px;
+    box-shadow: 2px 2px 30px rgba(0, 0, 0, 0.2);
+}
+
+.buy-btn:hover {
+    color: #FFFFFF;
+    background-color: #f15fa3;
+    transition: all ease 0.3s;
+}
+
+.overlay {
+    visibility: hidden;
+}
+
+.slide-img:hover .overlay {
+    visibility: visible;
+    animation: fade 0.5s;
+}
+
+@keyframes fade {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+.slider {
+    margin-top: 30px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

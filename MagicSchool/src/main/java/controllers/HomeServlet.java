@@ -27,15 +27,12 @@ public class HomeServlet extends HttpServlet {
         }
         switch (path){
             case "/Index":
-                List<Course> list = CourseModel.getAll();
-                request.setAttribute("course",list);
-
-                List<User> listNameTeacher = CourseModel.getTeach();
-                request.setAttribute("users",listNameTeacher);
-
-                List<Evaluate> listPoint = CourseModel.getPoint();
-                request.setAttribute("evaluate",listPoint);
-
+                List<Course> list = CourseModel.get10NewCourse();
+                request.setAttribute("NewCourse",list);
+                List<User> list1 = CourseModel.getTeach();
+                request.setAttribute("teacher",list1);
+                List<Evaluate> list2 = CourseModel.getPoint();
+                request.setAttribute("point",list2);
 
                 ServletUtils.forward("/views/vwHome/Index.jsp",request,response);
                 break;

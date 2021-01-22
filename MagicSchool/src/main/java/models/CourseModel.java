@@ -10,6 +10,18 @@ import java.util.List;
 import java.util.Optional;
 
 public class CourseModel {
+
+//    Lấy 10 khóa học mới nhất
+    public static List<Course> get10NewCourse(){
+        final String sql = "SELECT * FROM course ORDER BY course.id DESC";
+        try(Connection con = DBUtils.getConnection()){
+            return con.createQuery(sql).executeAndFetch(Course.class);
+        }
+    }
+
+
+
+
     public static List<Course> getAll(){
         final String sql = "select * from course";
         try (Connection con = DBUtils.getConnection()){
@@ -28,6 +40,9 @@ public class CourseModel {
             return con.createQuery(sql).executeAndFetch(Evaluate.class);
         }
     }
+
+
+
     public static Optional<Course> findByID(int courseid) {
         String sql = "select * from course where id = :id";
         try (Connection con = DBUtils.getConnection()) {

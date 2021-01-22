@@ -16,6 +16,11 @@
                 <p>Tên khóa học</p>
                 <p>Tên khóa học</p>
                 <p>Tên khóa học</p>
+            <div class="d-flex">
+                <a name="" id="" class="btn btn-outline-danger" href="${pageContext.request.contextPath}/User/AddWatchList?id=${course.id}" role="button">Add To Watch List</a>
+                <a name="" id="" class="btn btn-outline-success" href="${pageContext.request.contextPath}/User/AddToMyCourse?id=${course.id}" role="button">Buy Course</a>
+            </div>
+
         </div>
     </jsp:body>
 </t:main>
