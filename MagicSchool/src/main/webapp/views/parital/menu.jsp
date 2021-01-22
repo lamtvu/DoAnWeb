@@ -92,7 +92,7 @@
         <p style="width:400px;font-size:40px;font-weight:700;line-height: 50px;margin:0">Get early access,<br> now
         </p>
         <p style="width:400px;font-size:18px;">Be first for our <b>free learning course</b>, and get courses from
-            $9.99.</p>
+            $19.99.</p>
         <div class="bg-lightgray-magic-school border-normal-magic-school d-flex justify-content-center align-items-center"
              style="width:400px;height: 50px; border-radius:5px">
             <form action="">
