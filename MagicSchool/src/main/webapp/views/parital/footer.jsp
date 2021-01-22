@@ -7,19 +7,21 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-
-<jsp:useBean id="authUser" scope="session" type="beans.User"/>
+<jsp:useBean id="categoriesMenu" type="java.util.List<beans.Category>" scope="request"/>;
 
 <footer>
     <div class="border-top border-secondary mt-4">
         <div class="container mt-3">
             <div class="row justify-content-start">
                 <div class="col-4 d-flex flex-column ">
-                    <a class="text-success" href="#">Udemy for business</a>
-                    <a class="text-success" href="#">Teach on Udemy</a>
-                    <a class="text-success" href="#">Get the app</a>
-                    <a class="text-success" href="#">About us</a>
-                    <a class="text-success" href="#">Contacts us</a>
+                    <c:forEach var="c" items="${categoriesMenu}">
+                    <c:choose>
+                        <c:when test="${c.parentCat>0}">
+                            <a class="text-success" href="#">    ${c.name} </a>
+                        </c:when>
+                    </c:choose>
+                    </c:forEach>
+
                 </div>
                 <div class="col-4 d-flex flex-column">
                     <a class="text-success" href="#">Careers</a>
@@ -32,11 +34,16 @@
                     <a class="text-success" href="#">Sitemap</a>
                     <a class="text-success" href="#">Features Courses</a>
                 </div>
+
             </div>
         </div>
 
+            <div class="col-4 d-flex-column">
+            </div>
     </div>
-
+<a href="#">
+    <img src="${pageContext.request.contextPath}/public/imgs/logo.PNG"/>
+</a>
 
 
 </footer>
