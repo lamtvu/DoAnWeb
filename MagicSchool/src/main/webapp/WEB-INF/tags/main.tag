@@ -20,7 +20,7 @@
 <%--    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>--%>
 </head>
 <body>
-    <jsp:include page="../../parital/menu.jsp"/>
+    <jsp:include page="../../views/parital/menu.jsp"/>
     <jsp:doBody/>
     <script src="${pageContext.request.contextPath}/webjars/jquery/3.5.1/jquery.js"></script>
     <script src="${pageContext.request.contextPath}/webjars/bootstrap/5.0.0-beta1/js/bootstrap.bundle.min.js"></script>
