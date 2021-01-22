@@ -16,9 +16,34 @@
 <body>
     <jsp:include page="../../views/parital/menu.jsp"/>
     <jsp:doBody/>
-<%--    <script src="${pageContext.request.contextPath}/webjars/jquery/3.5.1/jquery.js"></script>--%>
-<%--    <script src="${pageContext.request.contextPath}/webjars/bootstrap/5.0.0-beta1/js/bootstrap.bundle.min.js"></script>--%>
-<%--    <script src="${pageContext.request.contextPath}/webjars/font-awesome/5.15.1/js/all.js"></script>--%>
+
+    <jsp:include page="../../views/parital/footer.jsp"/>
+
+    <script src="${pageContext.request.contextPath}/webjars/jquery/3.5.1/jquery.js"></script>
+    <script src="${pageContext.request.contextPath}/webjars/bootstrap/5.0.0-beta1/js/bootstrap.bundle.min.js"></script>
+    <script src="${pageContext.request.contextPath}/webjars/font-awesome/5.15.1/js/all.js"></script>
+    <jsp:invoke fragment="js"/>
+    <script>
+        $(document).ready(function() {
+            $('.owl-carousel').owlCarousel({
+                loop: true,
+                margin: 10,
+                nav: true,
+                responsive: {
+                    0: {
+                        items: 1
+                    },
+                    600: {
+                        items: 2
+                    },
+                    1000: {
+                        items: 4
+                    }
+                }
+            })
+        })
+
+
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <jsp:invoke fragment="js"/>
