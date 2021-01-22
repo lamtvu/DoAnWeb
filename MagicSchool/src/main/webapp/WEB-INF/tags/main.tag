@@ -22,6 +22,8 @@
 <body>
     <jsp:include page="../../views/parital/menu.jsp"/>
     <jsp:doBody/>
+    <jsp:include page="../../views/parital/footer.jsp"/>
+
     <script src="${pageContext.request.contextPath}/webjars/jquery/3.5.1/jquery.js"></script>
     <script src="${pageContext.request.contextPath}/webjars/bootstrap/5.0.0-beta1/js/bootstrap.bundle.min.js"></script>
     <script src="${pageContext.request.contextPath}/webjars/font-awesome/5.15.1/js/all.js"></script>
