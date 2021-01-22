@@ -100,7 +100,7 @@
                     style="border:0px;border-radius: 50px; font-weight: bold">
                 <option value="teacher" class="color-lightgray-magic-school"
                         style="font-weight: bold; border-radius:10px">Teacher</option>
-                <option value="teacher" class="color-lightgray-magic-school"
+                <option value="student" class="color-lightgray-magic-school"
                         style="font-weight: bold; border-radius: 10px;">Student</option>
             </select>
             <br>

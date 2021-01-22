@@ -3,6 +3,7 @@ package controllers;
 import at.favre.lib.crypto.bcrypt.BCrypt;
 import beans.User;
 import models.UserModel;
+//import org.graalvm.compiler.core.common.type.ArithmeticOpTable;
 import utils.ServletUtils;
 
 import javax.servlet.ServletException;
@@ -10,6 +11,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.Optional;
@@ -23,11 +25,40 @@ public class AccountServlet extends HttpServlet {
                 AddUser(request);
                 ServletUtils.redirect("/Account/Login",request,response);
                 break;
+            case"/Login":
+                postLogin(request,response);
+                break;
 
         }
+    }
+    private  void postLogin(HttpServletRequest request,HttpServletResponse response) throws IOException, ServletException {
+        String username = request.getParameter("username");
+        String password = request.getParameter("password");
+        Optional<User> user = UserModel.FindByUserName(username);
+        if(user.isPresent()){
+            BCrypt.Result result = BCrypt.verifyer().verify(password.toCharArray(),user.get().getPassword());
+            if (result.verified){
+                HttpSession session = request.getSession();
+                session.setAttribute("auth",true);
+                session.setAttribute("authUser",user.get());
+                ServletUtils.redirect("/Home/Index",request,response);
+            }
+            else {
+                request.setAttribute("hasError",true);
+                request.setAttribute("errorMessage","Invalid Password");
+                ServletUtils.forward("/views/vwAccount/login.jsp",request,response);
+            }
+
+        }
+        else {
+            request.setAttribute("hasError",true);
+            request.setAttribute("errorMessage","Invalid username");
+            ServletUtils.forward("/views/vwAccount/login.jsp",request,response);
+        }
+
 
     }
-    public static void AddUser(HttpServletRequest request){
+    private void AddUser(HttpServletRequest request){
        String username = request.getParameter("username");
        String password = request.getParameter("password");
        String bcryptHashString = BCrypt.withDefaults().hashToString(12, password.toCharArray());
@@ -40,9 +71,11 @@ public class AccountServlet extends HttpServlet {
         String path = request.getPathInfo();
         switch (path){
             case "/Register":
+
                 ServletUtils.forward("/views/vwAccount/register.jsp",request,response);
                 break;
             case "/Login":
+                request.setAttribute("hasError",false);
                 ServletUtils.forward("/views/vwAccount/login.jsp",request,response);
                 break;
             case"/IsExistUsername":

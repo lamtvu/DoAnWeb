@@ -4,6 +4,11 @@ $('.input-group-magic-school > input').on('focus',function(e){
     $(this).parent(this).children('label').css('bottom','100%').css('color','white');
     $(this).parent(this).children('label').removeClass('animation-shake-magic-school');
 })
+$('.input-group-focusout-magic-school > input').on('focusout',function(e){
+    if($(this).val().length == 0)
+        $(this).parent(this).children('label').css('bottom','10px').css('color','#8d8c86');
+
+})
 $('#password').on('input', function (e) {
     // e.preventDefault();
     securityView(passwordSecurityPoint());

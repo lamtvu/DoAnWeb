@@ -1,11 +1,6 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: lamtv
-  Date: 1/20/2021
-  Time: 9:13 AM
-  To change this template use File | Settings | File Templates.
---%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@taglib prefix="t" tagdir="/WEB-INF/tags" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html lang="en" class="h-100">
 
@@ -39,24 +34,31 @@
     <div style="width:500px;margin: auto;z-index: 2;" class="position-relative">
         <p style="font-weight: bold; font-size:50px; color:white; border-radius: 50px; text-align: center;">Login to Magic School
         </p>
+        <c:if test="${hasError}">
+            <div class="p-2" style="color: red;background-color: yellow; font-size: 20px;font-weight: bold; text-align: center; border-radius: 20px;">
+                    ${errorMessage}
+            </div>
+        </c:if>
         <form id="form-login" method="post" class="mt-5 mb-5" style="position:relative;">
-            <div class="position-relative w-100 color-lightgray-magic-school p-2 input-group-magic-school mb-5"
+            <div class="position-relative w-100 color-lightgray-magic-school p-2 input-group-magic-school input-group-focusout-magic-school mb-5"
                  style="border-radius: 50px; border: 3px solid white;background-color: white;">
                 <input type="text" name="username" autocomplete="off" id="username"
-                       class="h-75 border-0 m-1 w-100 color-lightgray-magic-school"
-                       style="font-weight: bold; background-color:transparent ;">
+                       class="h-75 border-0 m-1 color-lightgray-magic-school"
+                       style="width: 90%;font-weight: bold; background-color:transparent ;">
                 <label for="username">
                     UserName
                 </label>
+                <i class="fas fa-user"></i>
             </div>
-            <div class="position-relative w-100 color-lightgray-magic-school p-2 input-group-magic-school mb-5"
+            <div class="position-relative w-100 color-lightgray-magic-school p-2 input-group-magic-school input-group-focusout-magic-school mb-5"
                  style="border-radius: 50px; border: 3px solid white;background-color: white;">
                 <input type="password" name="password" autocomplete="off" id="password"
-                       class="h-75 border-0 m-1 w-100 color-lightgray-magic-school"
-                       style="font-weight: bold; background-color:transparent ;">
+                       class="h-75 border-0 m-1 color-lightgray-magic-school"
+                       style="width:90%;font-weight: bold; background-color:transparent;">
                 <label for="password">
                     Password
                 </label>
+                <i class="fas fa-key"></i>
             </div>
 
             <br>
