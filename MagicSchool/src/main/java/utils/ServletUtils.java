@@ -13,6 +13,12 @@ public class ServletUtils {
     }
 
     public static void redirect(String url, HttpServletRequest request, HttpServletResponse response) throws IOException {
-        response.sendRedirect(request.getContextPath()+url);
+        String ctxPath = request.getContextPath();
+        int idx = url.indexOf(ctxPath);
+        if (idx < 0) {
+            response.sendRedirect(request.getContextPath() + url);
+        } else {
+            response.sendRedirect(url);
+        };
     }
 }

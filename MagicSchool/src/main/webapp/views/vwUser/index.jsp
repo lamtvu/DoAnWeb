@@ -7,6 +7,7 @@
     <jsp:attribute name="js">
 
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js"></script>
+        <script src="${pageContext.request.contextPath}/public/js/main.js"></script>
         <script src="${pageContext.request.contextPath}/public/js/Admin.js"></script>
         <script>
             $('.edit-email-window-magic-school form').on("submit",function (e){
