@@ -9,13 +9,13 @@ $('.input-group-focusout-magic-school > input').on('focusout',function(e){
         $(this).parent(this).children('label').css('bottom','10px').css('color','#8d8c86');
 
 })
-$('#password').on('input', function (e) {
-    // e.preventDefault();
-    securityView(passwordSecurityPoint());
-})
-function passwordSecurityPoint()
+// $('#password').on('input', function (e) {
+//     // e.preventDefault();
+//     securityView(passwordSecurityPoint(this));
+// })
+function passwordSecurityPoint(element)
 {
-    const password = $('#password').val();
+    let password = $(element).val();
     let point = 0;
     const special = new RegExp("[~!@#$%^&*()\_+`=<>,\\.:'{}()\"\-?\/]");
     if (special.test(password)&&/[^0-9]/g.test(password))

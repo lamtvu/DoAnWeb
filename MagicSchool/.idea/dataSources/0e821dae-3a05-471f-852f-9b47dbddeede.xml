@@ -1,20 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<dataSource name="dbmacgicschool@localhost">
+<dataSource name="@localhost">
   <database-model serializer="dbm" dbms="MARIADB" family-id="MARIADB" format-version="4.20">
     <root id="1">
-      <ServerVersion>10.4.17</ServerVersion>
+      <ServerVersion>10.4.14</ServerVersion>
       <DefaultEngine>InnoDB</DefaultEngine>
       <DefaultCasing>lower/lower</DefaultCasing>
     </root>
-    <schema id="2" parent="1" name="dbmacgicschool">
+    <schema id="2" parent="1" name="dbmagicschool">
       <Current>1</Current>
-      <Collation>utf8_vietnamese_ci</Collation>
+      <Collation>utf8mb4_general_ci</Collation>
     </schema>
     <schema id="3" parent="1" name="information_schema">
       <Collation>utf8_general_ci</Collation>
     </schema>
     <schema id="4" parent="1" name="mysql">
-      <Collation>latin1_swedish_ci</Collation>
+      <Collation>utf8mb4_general_ci</Collation>
     </schema>
     <schema id="5" parent="1" name="performance_schema">
       <Collation>utf8_general_ci</Collation>
@@ -22,8 +22,8 @@
     <schema id="6" parent="1" name="phpmyadmin">
       <Collation>utf8_bin</Collation>
     </schema>
-    <schema id="7" parent="1" name="qlbh">
-      <Collation>utf8_vietnamese_ci</Collation>
+    <schema id="7" parent="1" name="qlbh1">
+      <Collation>utf8mb4_general_ci</Collation>
     </schema>
     <schema id="8" parent="1" name="test">
       <Collation>latin1_swedish_ci</Collation>

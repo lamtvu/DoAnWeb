@@ -1,5 +1,6 @@
 package models;
 
+import beans.Category;
 import beans.Course;
 import beans.Evaluate;
 import beans.User;
@@ -41,6 +42,13 @@ public class CourseModel {
         }
     }
 
+    public  static  List<Category> getField(){
+        final String sql ="select * from category";
+        try (Connection con = DBUtils.getConnection()){
+            return con.createQuery(sql).executeAndFetch(Category.class);
+        }
+    }
+
 
 
     public static Optional<Course> findByID(int courseid) {
@@ -55,6 +63,12 @@ public class CourseModel {
             return Optional.ofNullable(list.get(0));
         }
     }
-
+    public static List<Course> findByCatID(int CatID){
+        String sql = "select* from course where catID=:catID";
+        try(Connection conn = DBUtils.getConnection())
+        {
+            return conn.createQuery(sql).addParameter("catID",CatID).executeAndFetch(Course.class);
+        }
+    }
 
 }

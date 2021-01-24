@@ -40,24 +40,18 @@
             </div>
         </c:if>
         <form id="form-login" method="post" class="mt-5 mb-5" style="position:relative;">
-            <div class="position-relative w-100 color-lightgray-magic-school p-2 input-group-magic-school input-group-focusout-magic-school mb-5"
-                 style="border-radius: 50px; border: 3px solid white;background-color: white;">
-                <input type="text" name="username" autocomplete="off" id="username"
+            <div class="position-relative w-100 color-lightgray-magic-school p-2 mb-5"
+                 style="border-radius: 50px;border: 3px solid white;background-color: white;">
+                <input type="text" name="username"  id="username" placeholder="Username"
                        class="h-75 border-0 m-1 color-lightgray-magic-school"
                        style="width: 90%;font-weight: bold; background-color:transparent ;">
-                <label for="username">
-                    UserName
-                </label>
                 <i class="fas fa-user"></i>
             </div>
-            <div class="position-relative w-100 color-lightgray-magic-school p-2 input-group-magic-school input-group-focusout-magic-school mb-5"
+            <div class="position-relative w-100 color-lightgray-magic-school p-2  mb-5"
                  style="border-radius: 50px; border: 3px solid white;background-color: white;">
-                <input type="password" name="password" autocomplete="off" id="password"
+                <input type="password" name="password"  id="password" placeholder="password"
                        class="h-75 border-0 m-1 color-lightgray-magic-school"
                        style="width:90%;font-weight: bold; background-color:transparent;">
-                <label for="password">
-                    Password
-                </label>
                 <i class="fas fa-key"></i>
             </div>
 

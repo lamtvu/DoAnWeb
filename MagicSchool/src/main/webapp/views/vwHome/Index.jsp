@@ -5,7 +5,7 @@
 <jsp:useBean id="NewCourse" scope="request" type="java.util.List<beans.Course>"/>
 <jsp:useBean id="teacher" scope="request" type="java.util.List<beans.User>"/>
 <jsp:useBean id="point" scope="request" type="java.util.List<beans.Evaluate>"/>
-
+<jsp:useBean id="field" scope="request" type="java.util.List<beans.Category>"/>
 
 <t:main>
     <jsp:attribute name="css">
@@ -37,7 +37,12 @@
                                 <div class="detail-box">
                                     <div class="type">
                                         <p class="name-course">${c.coursename}</p>
-                                        <p>Web</p>
+<%--                                        <c:forEach var="f" items="${field}">--%>
+<%--                                            <c:if test="${c.catID == f.id}">--%>
+<%--                                                <p>${f.name}</p>--%>
+<%--                                            </c:if>--%>
+<%--                                        </c:forEach>--%>
+                                        <p>ww</p>
                                         <c:forEach var="t" items="${teacher}">
                                             <c:if test="${c.id == t.id}">
                                                 <span class="teacher">${t.name}</span>

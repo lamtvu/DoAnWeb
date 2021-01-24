@@ -1,5 +1,6 @@
 package controllers;
 
+import beans.Category;
 import beans.Course;
 import beans.Evaluate;
 import beans.User;
@@ -33,6 +34,9 @@ public class HomeServlet extends HttpServlet {
                 request.setAttribute("teacher",list1);
                 List<Evaluate> list2 = CourseModel.getPoint();
                 request.setAttribute("point",list2);
+                List<Category> list3 =CourseModel.getField();
+                request.setAttribute("field",list3);
+
 
                 ServletUtils.forward("/views/vwHome/Index.jsp",request,response);
                 break;

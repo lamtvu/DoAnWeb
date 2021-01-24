@@ -42,7 +42,7 @@
         <form id="form-register" method="post" class="mt-5 mb-5" style="position:relative;">
             <div class="position-relative w-100 color-lightgray-magic-school p-2 input-group-magic-school mb-5"
                  style="border-radius: 50px; border: 3px solid white;background-color: white;">
-                <input type="text" name="username" autocomplete="off" id="username" maxlength="50"
+                <input type="text" name="username" autocomplete="new-password" id="username" maxlength="50"
                        class="h-75 border-0 m-1 w-100 color-lightgray-magic-school"
                        style="font-weight: bold; background-color:transparent ;">
                 <label for="username">
@@ -51,7 +51,7 @@
             </div>
             <div class="position-relative w-100 color-lightgray-magic-school p-2 input-group-magic-school mb-5"
                  style="border-radius: 50px; border: 3px solid white;background-color: white;">
-                <input type="password" name="password" autocomplete="off" id="password" maxlength="50"
+                <input type="password" name="password" autocomplete="new-password" id="password" maxlength="50"
                        class="h-75 border-0 m-1 w-100 color-lightgray-magic-school"
                        style="font-weight: bold; background-color:transparent ;">
                 <label for="password">
@@ -96,14 +96,6 @@
                     Email
                 </label>
             </div>
-            <select id="office" name="office" class="w-100 color-lightgray-magic-school p-3 mb-5"
-                    style="border:0px;border-radius: 50px; font-weight: bold">
-                <option value="teacher" class="color-lightgray-magic-school"
-                        style="font-weight: bold; border-radius:10px">Teacher</option>
-                <option value="student" class="color-lightgray-magic-school"
-                        style="font-weight: bold; border-radius: 10px;">Student</option>
-            </select>
-            <br>
             <button type="submit" class="color-lightgray-magic-school w-50 btn-magic-school p-3"
                     style="margin-left:25%;border-radius: 50px;font-weight: bold; background-color: white;"
                     formaction="${pageContext.request.contextPath}/Account/Register">
@@ -118,14 +110,31 @@
 <script src="${pageContext.request.contextPath}/public/js/main.js"></script>
 <script src="${pageContext.request.contextPath}/public/js/checkInput.js"></script>
 <script>
+    $()
     $("#username").on('focusout',function (e){
         checkEmpty(this);
         checkUsername('${pageContext.request.contextPath}');
     })
-    $("#password").on('focusout',function (e){ checkEmpty(this); checkPassword(passwordSecurityPoint());checkConfirm('${pageContext.request.contextPath}');})
+    $('#password').on('input',function (e){
+        securityView(passwordSecurityPoint(this));
+    })
+    $("#password").on('focusout',function (e){ checkEmpty(this); checkPassword(passwordSecurityPoint(this));checkConfirm('${pageContext.request.contextPath}');})
     $("#confirm").on('focusout',function (e){ checkEmpty(this);checkConfirm();})
     $("#name").on('focusout',function (e){ checkEmpty(this); checkFullName();})
     $("#email").on('focusout',function (e){ checkEmail('${pageContext.request.contextPath}');})
+    $("#form-register").on('submit',function(e){
+        e.preventDefault();
+        if(!checkEmpty('#username') || !checkEmpty('#password') || !checkEmpty('#confirm') || !checkEmpty('#name'))
+        {
+            return;
+        }
+        if( !checkUsername('${pageContext.request.contextPath}') || !checkPassword(passwordSecurityPoint('#password')) || !checkConfirm() || !checkFullName() || !checkEmail('${pageContext.request.contextPath}'))
+        {
+            return;
+        }
+        $("#form-register").off('submit').submit();
+
+    })
 </script>
 </body>
 

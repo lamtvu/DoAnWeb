@@ -27,9 +27,20 @@ public class AccountServlet extends HttpServlet {
                 break;
             case"/Login":
                 postLogin(request,response);
+            case "/Logout":
+
                 break;
 
         }
+    }
+    private void PostLogout(HttpServletRequest request,HttpServletResponse response) throws IOException {
+        HttpSession session = request.getSession();
+        session.setAttribute("auth",null);
+        session.setAttribute("authUser",new User());
+
+        String url = request.getHeader("referer");
+        if(url == null) url="/Home";
+        ServletUtils.redirect(url,request,response);
     }
     private  void postLogin(HttpServletRequest request,HttpServletResponse response) throws IOException, ServletException {
         String username = request.getParameter("username");
@@ -64,8 +75,7 @@ public class AccountServlet extends HttpServlet {
        String bcryptHashString = BCrypt.withDefaults().hashToString(12, password.toCharArray());
        String name = request.getParameter("name");
        String email = request.getParameter("email");
-       String office = request.getParameter("office");
-        UserModel.Add(new User(-1,username,bcryptHashString,name,email,office));
+        UserModel.Add(new User(-1,username,bcryptHashString,name,email,"student"));
     }
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String path = request.getPathInfo();
@@ -96,8 +106,20 @@ public class AccountServlet extends HttpServlet {
                 outp.print(userE.isPresent());
                 outp.flush();
                 break;
+            case"/IsEqualAuthUserPassword":
+                HttpSession session = request.getSession();
+                User authUser = (User) session.getAttribute("authUser");
+                String password = request.getParameter("password");
+                BCrypt.Result result = BCrypt.verifyer().verify(password.toCharArray(),authUser.getPassword());
+                PrintWriter content = response.getWriter();
+                response.setContentType("application/json");
+                response.setCharacterEncoding("utf-8");
+                content.print(result.verified);
+                content.flush();
+                break;
             default:
                 ServletUtils.redirect("/notFound",request,response);
+                break;
         }
 
     }
