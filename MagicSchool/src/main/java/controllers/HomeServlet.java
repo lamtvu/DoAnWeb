@@ -14,6 +14,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.List;
+import java.util.Map;
 
 @WebServlet(name = "HomeServlet", urlPatterns = "/Home/*")
 public class HomeServlet extends HttpServlet {
@@ -28,16 +29,12 @@ public class HomeServlet extends HttpServlet {
         }
         switch (path){
             case "/Index":
-                List<Course> list = CourseModel.get10NewCourse();
-                request.setAttribute("NewCourse",list);
-                List<User> list1 = CourseModel.getTeach();
-                request.setAttribute("teacher",list1);
-                List<Evaluate> list2 = CourseModel.getPoint();
-                request.setAttribute("point",list2);
-                List<Category> list3 =CourseModel.getField();
-                request.setAttribute("field",list3);
-
-
+                List<Map<String,Object>> list = CourseModel.GetNewCourse();
+                request.setAttribute("courses",list);
+//                for (String key: list3.get(0).keySet())
+//                {
+//                    System.out.println(key);
+//                }
                 ServletUtils.forward("/views/vwHome/Index.jsp",request,response);
                 break;
             default:

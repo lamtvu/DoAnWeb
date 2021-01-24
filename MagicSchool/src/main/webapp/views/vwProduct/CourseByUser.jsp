@@ -14,12 +14,10 @@
                             <div class="card mb-3">
                                 <img class="card-img-top" src="" alt="">
                                 <div class="card-body">
-                                    <h5 class="card-title">${c.coursename}</h5>
-                                    <p class="card-text">${c.id}</p>
-                                    <p class="card-text">${c.tinyDes}</p>
-                                    <p class="card-text">${c.fullDes}</p>
-                                    <div class="d-flex">
-                                        <a name="#" id="" class="btn btn-warning" href="" role="button">Learn</a>
+                                    <h5 class="card-title text-center">${c.coursename}</h5>
+                                    <div class="d-flex justify-content-center">
+                                        <a name="#" id="" class="btn btn-outline-success " href="" role="button">
+                                            <i class="fa fa-arrow-circle-right" aria-hidden="true"></i> Learn</a>
                                     </div>
 
                                 </div>

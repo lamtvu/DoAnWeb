@@ -15,12 +15,14 @@
                             <div class="card mb-3">
                                 <img class="card-img-top" src="" alt="">
                                 <div class="card-body">
-                                    <h5 class="card-title">${c.coursename}</h5>
-                                    <p class="card-text">${c.coursename}</p>
-                                    <p class="card-text">${c.coursename}</p>
-                                    <p class="card-text">${c.id}</p>
-                                    <div class="d-flex">
-                                        <a name="#" id="" class="btn btn-warning" href="${pageContext.request.contextPath}/User/DeleteWatchList?id=${c.id}" role="button">Delete</a>
+                                    <h5 class="card-title text-center">${c.coursename}</h5>
+                                        <%--                                    <p class="card-text">${c.coursename}</p>--%>
+                                        <%--                                    <p class="card-text">${c.coursename}</p>--%>
+                                        <%--                                    <p class="card-text">${c.id}</p>--%>
+                                    <div class="d-flex justify-content-center">
+                                        <a name="#" id="" class="btn btn-outline-danger mt-1" href="${pageContext.request.contextPath}/User/DeleteWatchList?id=${c.id}" role="button">
+                                            <i class="fa fa-trash" aria-hidden="true"></i> Delete
+                                        </a>
                                     </div>
 
                                 </div>

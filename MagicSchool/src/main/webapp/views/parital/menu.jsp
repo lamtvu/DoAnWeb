@@ -21,7 +21,7 @@
                                 <c:forEach var="cc" items="${categoriesMenu}">
                                 <c:choose>
                                     <c:when test="${cc.parentCat == cp.id}">
-                                            <li><a class="menu-text-magic-school" href="#">${cc.name}</a></li>
+                                            <li><a class="menu-text-magic-school" href="${pageContext.request.contextPath}/Course/ByCat?id=${cc.id}">${cc.name}</a></li>
                                     </c:when>
                                 </c:choose>
                             </c:forEach>

@@ -8,47 +8,16 @@ import org.sql2o.Connection;
 import utils.DBUtils;
 
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
 public class CourseModel {
-
-//    Lấy 10 khóa học mới nhất
-    public static List<Course> get10NewCourse(){
-        final String sql = "SELECT * FROM course ORDER BY course.id DESC";
-        try(Connection con = DBUtils.getConnection()){
-            return con.createQuery(sql).executeAndFetch(Course.class);
-        }
-    }
-
-
-
-
     public static List<Course> getAll(){
         final String sql = "select * from course";
         try (Connection con = DBUtils.getConnection()){
             return con.createQuery(sql).executeAndFetch(Course.class);
         }
     }
-    public static  List<User> getTeach(){
-        final String sql = "select users.name,users.id from course,users where course.teacherID = users.id";
-        try (Connection con = DBUtils.getConnection()){
-            return con.createQuery(sql).executeAndFetch(User.class);
-        }
-    }
-    public static  List<Evaluate> getPoint(){
-        final String sql ="select evaluate.courseID, AVG(evaluate.point) as point from evaluate,course where evaluate.courseID = course.id GROUP BY evaluate.courseID";
-        try (Connection con = DBUtils.getConnection()){
-            return con.createQuery(sql).executeAndFetch(Evaluate.class);
-        }
-    }
-
-    public  static  List<Category> getField(){
-        final String sql ="select * from category";
-        try (Connection con = DBUtils.getConnection()){
-            return con.createQuery(sql).executeAndFetch(Category.class);
-        }
-    }
-
 
 
     public static Optional<Course> findByID(int courseid) {
@@ -63,6 +32,49 @@ public class CourseModel {
             return Optional.ofNullable(list.get(0));
         }
     }
+
+//    public static List<Map<String, Object>> GetAdd()
+//    {
+//        String sql="SELECT course.id,course.coursename,course.TinyDes,course.FullDes,course.price,course.updateDate,users.`name` as userName,category.`name`as catName,COUNT(evaluate.userID) as num,ROUND(AVG(evaluate.point),1)as point from course left JOIN evaluate ON course.id = evaluate.courseID,users,category WHERE users.id = course.teacherID and course.catID = category.id  GROUP BY course.id";
+//        try(Connection conn = DBUtils.getConnection())
+//        {
+//            return conn.createQuery(sql).executeAndFetchTable().asList();
+//        }
+//    }
+    public  static  List<Map<String,Object>> GetNewCourse(){
+        String sql="SELECT course.id,course.coursename,course.TinyDes,course.FullDes,course.price,course.updateDate,users.`name` as userName,category.`name`as catName,COUNT(evaluate.userID) as num,ROUND(AVG(evaluate.point),1)as point from course left JOIN evaluate ON course.id = evaluate.courseID,users,category WHERE users.id = course.teacherID and course.catID = category.id GROUP BY course.id ORDER BY DATE(course.updateDate) DESC Limit 10";
+        try(Connection conn = DBUtils.getConnection())
+        {
+            return conn.createQuery(sql).executeAndFetchTable().asList();
+        }
+    }
+
+
+
+
+    public static List<Map<String, Object>> GetByID(int id){
+        String sql="SELECT course.id,course.coursename,course.TinyDes,course.FullDes,course.price,course.updateDate,users.`name` as userName,category.`name`as catName,COUNT(evaluate.userID) as num,ROUND(AVG(evaluate.point),1)as point FROM users,course,category,evaluate WHERE users.id = course.teacherID AND course.catID = category.id AND evaluate.courseID = course.id AND course.id=:id GROUP BY course.id";
+        try(Connection conn = DBUtils.getConnection()){
+            return conn.createQuery(sql)
+                    .addParameter("id",id)
+                    .executeAndFetchTable().asList();
+
+        }
+
+    }
+
+    public static List<Map<String,Object>> GetByCat(int id){
+//        String sql="SELECT course.id,course.coursename,course.TinyDes,course.FullDes,course.price,course.updateDate,users.`name` as userName,category.`name`as catName,COUNT(evaluate.userID) as num,ROUND(AVG(evaluate.point),1)as point FROM users,course,category,evaluate WHERE users.id = course.teacherID AND course.catID = category.id AND evaluate.courseID = course.id AND category.id=:id GROUP BY course.id";
+        String sql="SELECT course.id,course.coursename,course.TinyDes,course.FullDes,course.price,course.updateDate,users.`name` as userName,category.`name`as catName,COUNT(evaluate.userID) as num,ROUND(AVG(evaluate.point),1)as point from course left JOIN evaluate ON course.id = evaluate.courseID,users,category WHERE users.id = course.teacherID and course.catID = category.id and category.id=:id GROUP BY course.id";
+        try(Connection conn = DBUtils.getConnection()){
+            return conn.createQuery(sql)
+                    .addParameter("id",id)
+                    .executeAndFetchTable().asList();
+
+        }
+    }
+
+
     public static List<Course> findByCatID(int CatID){
         String sql = "select* from course where catID=:catID";
         try(Connection conn = DBUtils.getConnection())

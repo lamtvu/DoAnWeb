@@ -63,7 +63,7 @@ public class UserModel {
     }
 
     public static List<Course> FindCourseByUserID(int id){
-        String sql = "select course.id,course.TinyDes,course.price,course.evaluateID,course.coursename from course,users,cart WHERE course.id = cart.courseID AND cart.userID = users.id AND users.id =:id";
+        String sql = "select course.id,course.TinyDes,course.price,course.coursename from course,users,ownlist WHERE course.id = ownlist.courseID AND ownlist.userID = users.id AND users.id =:id";
         try (Connection con = DBUtils.getConnection()) {
             return con.createQuery(sql)
                     .addParameter("id", id)
@@ -82,7 +82,7 @@ public class UserModel {
 
     }
 
-    public static void add(Watchlist wl){
+    public static void add(Ownlist wl){
         final String sql="INSERT INTO watchlist (userID, courseID) VALUES (:userID,:courseID)";
         try (Connection con = DBUtils.getConnection()) {
             con.createQuery(sql)
@@ -93,8 +93,8 @@ public class UserModel {
     }
 
 
-    public static void addCourse(Cart c){
-        final String sql="INSERT INTO cart (userID, courseID) VALUES (:userID,:courseID)";
+    public static void addCourse(Ownlist c){
+        final String sql="INSERT INTO ownlist (userID, courseID) VALUES (:userID,:courseID)";
         try (Connection con = DBUtils.getConnection()) {
             con.createQuery(sql)
                     .addParameter("userID", c.getUserID())

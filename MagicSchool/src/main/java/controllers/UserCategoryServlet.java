@@ -1,9 +1,6 @@
 package controllers;
 
-import beans.Cart;
-import beans.Course;
-import beans.User;
-import beans.Watchlist;
+import beans.*;
 import models.CourseModel;
 import models.UserModel;
 import utils.ServletUtils;
@@ -33,6 +30,12 @@ public class UserCategoryServlet extends HttpServlet {
                 request.setAttribute("course",list);
                 ServletUtils.forward("/views/vwProduct/CourseByUser.jsp",request,response);
                 break;
+            case"/AddToMyCourse":
+                int idCourseBuy = Integer.parseInt(request.getParameter("id"));
+                Ownlist cart = new Ownlist(-1,user.getId(),idCourseBuy);
+                UserModel.addCourse(cart);
+                ServletUtils.redirect("/User/MyCourse",request,response);
+                break;
             case"/MyWatchList":
 
                 List<Course> watchList = UserModel.FindWatchListByUserID(user.getId());
@@ -42,9 +45,9 @@ public class UserCategoryServlet extends HttpServlet {
             case"/AddWatchList":
                 int idCourse = Integer.parseInt(request.getParameter("id"));
 //                System.out.println(idCourse);
-                Watchlist wl = new Watchlist(-1,user.getId(),idCourse);
+                Ownlist ownl = new Ownlist(-1,user.getId(),idCourse);
 //                System.out.println(user.getId());
-                UserModel.add(wl);
+                UserModel.add(ownl);
                 ServletUtils.redirect("/User/MyWatchList",request,response);
                 break;
             case"/DeleteWatchList":
@@ -56,13 +59,7 @@ public class UserCategoryServlet extends HttpServlet {
 
                 ServletUtils.redirect("/User/MyWatchList",request,response);
                 break;
-            case"/AddToMyCourse":
-                int idCourseBuy = Integer.parseInt(request.getParameter("id"));
-                Cart cart = new Cart(-1,user.getId(),idCourseBuy);
-                UserModel.addCourse(cart);
-                ServletUtils.redirect("/User/MyCourse",request,response);
 
-                break;
             default:
                 ServletUtils.redirect("/NotFound", request, response);
                 break;
