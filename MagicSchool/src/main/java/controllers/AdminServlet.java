@@ -52,6 +52,7 @@ public class AdminServlet extends HttpServlet {
                 break;
             case "/UpdateTeacherPass":
                 doPostUpdateTeacherPassword(request,response);
+
                 break;
             default:
                 ServletUtils.redirect("/NotFound",request,response);
@@ -113,8 +114,7 @@ public class AdminServlet extends HttpServlet {
     }
     private void doPostDeleteCourse(HttpServletRequest request,HttpServletResponse response) throws IOException {
         int id = Integer.parseInt(request.getParameter("courseDeleteID"));
-
-
+        CourseModel.delete(id);
         ServletUtils.redirect("/Admin/Index",request,response);
     }
     private void doPostUpdateNameCategory(HttpServletRequest request,HttpServletResponse response) throws IOException {
@@ -140,7 +140,9 @@ public class AdminServlet extends HttpServlet {
         switch (path)
         {
             case "/Index":
+                System.out.println("aaa");
                 List<Course> list = CourseModel.getAll();
+                System.out.println("aaa");
                 request.setAttribute("courses",list);
                 List<User> list1 = UserModel.getAllUsersByOffice("teacher");
                 request.setAttribute("teachers",list1);
@@ -152,3 +154,4 @@ public class AdminServlet extends HttpServlet {
         }
     }
 }
+

@@ -70,11 +70,13 @@
                     <a class="mx-4"href="${pageContext.request.contextPath}/User/MyWatchList">
                         <i class="fas fa-heart" style="font-size: 30px;color: hotpink;"></i>
                     </a>
-                    <p class="fw-bolder">
+                    <a class="fw-bolder mx-3" href="${pageContext.request.contextPath}/Information/Index">
                         Hi! ${authUser.name}
-                    </p>
+                    </a>
                 </div>
-                <a class="btn-magic-school p-2 m-1" style="border-radius: 10px;background-color: #badc58;font-weight: 700;" href="#">Sign Out</a>
+                <form method="post" action="${pageContext.request.contextPath}/Account/Logout">
+                    <button type="submit" class="btn btn-outline-info">Logout</button>
+                </form>
             </c:when>
             <c:otherwise>
                 <a class="btn-blue-magic-school p-2 m-1" style="width:80px; font-weight: 700;" href="${pageContext.request.contextPath}/Account/Register">Sign Up</a>

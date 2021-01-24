@@ -27,8 +27,9 @@ public class AccountServlet extends HttpServlet {
                 break;
             case"/Login":
                 postLogin(request,response);
+                break;
             case "/Logout":
-
+                PostLogout(request,response);
                 break;
 
         }
@@ -38,9 +39,10 @@ public class AccountServlet extends HttpServlet {
         session.setAttribute("auth",null);
         session.setAttribute("authUser",new User());
 
-        String url = request.getHeader("referer");
-        if(url == null) url="/Home";
-        ServletUtils.redirect(url,request,response);
+        ServletUtils.redirect("/Account/Login",request,response);
+//        String url = request.getHeader("referer");
+//        if(url == null) url="/Home/Index";
+//        ServletUtils.redirect(url,request,response);
     }
     private  void postLogin(HttpServletRequest request,HttpServletResponse response) throws IOException, ServletException {
         String username = request.getParameter("username");

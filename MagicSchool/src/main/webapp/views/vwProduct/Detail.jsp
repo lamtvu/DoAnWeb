@@ -26,8 +26,10 @@
         <%--            </div>--%>
         <div class="container d-flex justify-content-center align-content-center flex-column"
              style="background: linear-gradient(to left, #e056fd, #7ed6df);;">
-            <div class="product d-flex bg-white mt-5 mb-5 mx-auto">
-                <!-- <img src="bai-tap-dau-cham-hoi-lop-2-2.jpg"></img> -->
+
+            <div class="product d-flex bg-white mt-5 mb-5 mx-auto position-relative")>
+<%--                ${courses.get(0)}--%>
+                <img src="${pageContext.request.contextPath}/public/image/${courses.get(0).get("id")}.jpg" style="width: 400px">
                 <div class="information mx-5">
                     <c:forEach var="c" items="${courses}">
                         <h1 class="p-4 text-center">${c.get("coursename")}</h1>

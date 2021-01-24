@@ -26,7 +26,7 @@
                         <li class="item-a">
                             <div class="box">
                                 <div class="slide-img">
-                                    <img alt="" src="">
+                                    <img alt="" src="${pageContext.request.contextPath}/public/image/${c.id}.jpg">
                                     <div class="overlay">
                                         <a href="${pageContext.request.contextPath}/Course/Detail?id=${c.get("id")}" class="buy-btn">Detail</a>
                                     </div>

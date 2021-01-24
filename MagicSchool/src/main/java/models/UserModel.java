@@ -123,11 +123,14 @@ public class UserModel {
         String sql = "Delete FROM users where id=:id";
         String sql2  = "Delete From ownlist where userID=:id";
         String sql3 = "Delete From evaluate where userID=:id";
-//        CourseModel.deleteByUserID(ID);
+        String sql4 = "DELETE FROM watchlist WHERE userID = :id";
+        String sql5 = "Delete from course where teacherID=:id";
         try (Connection conn = DBUtils.getConnection()){
             conn.createQuery(sql).addParameter("id",ID).executeUpdate();
             conn.createQuery(sql2).addParameter("id",ID).executeUpdate();
             conn.createQuery(sql3).addParameter("id",ID).executeUpdate();
+            conn.createQuery(sql4).addParameter("id",ID).executeUpdate();
+            conn.createQuery(sql5).addParameter("id",ID).executeUpdate();
         }
     }
     public static void UpdateEmail(int id,String Email){

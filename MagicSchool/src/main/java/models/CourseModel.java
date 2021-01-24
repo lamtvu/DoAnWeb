@@ -42,7 +42,7 @@ public  static  List<Map<String,Object>> GetNewCourse(){
 
 
     public static List<Map<String, Object>> GetByID(int id){
-        String sql="SELECT course.id,course.coursename,course.TinyDes,course.FullDes,course.price,course.updateDate,users.`name` as userName,category.`name`as catName,COUNT(evaluate.userID) as num,ROUND(AVG(evaluate.point),1)as point FROM users,course,category,evaluate WHERE users.id = course.teacherID AND course.catID = category.id AND evaluate.courseID = course.id AND course.id=:id GROUP BY course.id";
+        String sql="SELECT course.id,course.coursename,course.TinyDes,course.FullDes,course.price,course.updateDate,users.`name` as userName,category.`name`as catName,COUNT(evaluate.userID) as num,ROUND(AVG(evaluate.point),1)as point FROM users,category,course left JOIN evaluate on course.id = evaluate.courseID WHERE users.id = course.teacherID AND course.catID = category.id AND course.id =:id GROUP BY course.id";
         try(Connection conn = DBUtils.getConnection()){
             return conn.createQuery(sql)
                     .addParameter("id",id)
@@ -96,6 +96,40 @@ public  static  List<Map<String,Object>> GetNewCourse(){
     }
 
 
-
+    public static void delete(int id){
+        String sql1 = "Delete from course where id=:id";
+        String sql2 = "DELETE FROM ownlist WHERE courseID = :id ";
+        String sql3 = "DELETE FROM watchlist WHERE courseID = :id ";
+        String sql4 = "DELETE FROM evaluate WHERE courseID = :id";
+        try (Connection conn = DBUtils.getConnection())
+        {
+            conn.createQuery(sql1).addParameter("id",id).executeUpdate();
+            conn.createQuery(sql2).addParameter("id",id).executeUpdate();
+            conn.createQuery(sql3).addParameter("id",id).executeUpdate();
+            conn.createQuery(sql4).addParameter("id",id).executeUpdate();
+        }
+    }
+    public static void add(Course course){
+        String sql = "INSERT INTO course (coursename, TinyDes, FullDes, catID, teacherID, price, updateDate, complete) VALUES (:coursename,:tinydes,:fulldes,:catid,:teacherid,:price,:updatedate,:complete)";
+        try (Connection conn = DBUtils.getConnection()){
+            conn.createQuery(sql)
+                    .addParameter("coursename",course.getCoursename())
+                    .addParameter("tinydes",course.getTinyDes())
+                    .addParameter("fulldes",course.getFullDes())
+                    .addParameter("catid",course.getCatID())
+                    .addParameter("teacherid",course.getTeacherID())
+                    .addParameter("price",course.getPrice())
+                    .addParameter("updatedate",course.getUpdateDate())
+                    .addParameter("complete",course.getComplete())
+                    .executeUpdate();
+        }
+    }
+    public static List<Map<String,Object>> getMaxID()
+    {
+        String sql = "select MAX(id) as maxid FROM course";
+        try(Connection conn = DBUtils.getConnection()){
+            return conn.createQuery(sql).executeAndFetchTable().asList();
+        }
+    }
 //    GROUP BY course.id
 }

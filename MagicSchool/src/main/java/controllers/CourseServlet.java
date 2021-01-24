@@ -33,7 +33,7 @@ public class CourseServlet extends HttpServlet {
 //                {
 //                    System.out.println(key);
 //                }
-
+                 System.out.println(list.get(0).get("id"));
                 request.setAttribute("courses",list);
                 ServletUtils.forward("/views/vwProduct/Detail.jsp", request, response);
                 break;
