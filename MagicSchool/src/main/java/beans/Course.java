@@ -3,16 +3,17 @@ package beans;
 import java.util.Date;
 
 public class Course {
-    int id, evaluateID, teacherID, price, catID;
-    String coursename, TinyDes, FullDes;
+    int id, teacherID, price, catID;
+    String coursename, TinyDes, FullDes,information,complete;
     Date updateDate;
 
     public Course() {
     }
 
-    public Course(int id, int evaluateID, int teacherID, int price, int catID, String coursename, String tinyDes, String fullDes, Date updateDate) {
+
+    public Course(int id, int teacherID, int price, int catID, String coursename,String complete, String tinyDes, String fullDes, Date updateDate, String information) {
         this.id = id;
-        this.evaluateID = evaluateID;
+
         this.teacherID = teacherID;
         this.price = price;
         this.catID = catID;
@@ -20,6 +21,8 @@ public class Course {
         TinyDes = tinyDes;
         FullDes = fullDes;
         this.updateDate = updateDate;
+        this.information = information;
+        this.complete=complete;
     }
 
     public int getId() {
@@ -30,12 +33,12 @@ public class Course {
         this.id = id;
     }
 
-    public int getEvaluateID() {
-        return evaluateID;
+    public String getComplete() {
+        return complete;
     }
 
-    public void setEvaluateID(int evaluateID) {
-        this.evaluateID = evaluateID;
+    public void setComplete(String complete) {
+        this.complete = complete;
     }
 
     public int getTeacherID() {
@@ -93,4 +96,12 @@ public class Course {
     public void setUpdateDate(Date updateDate) {
         this.updateDate = updateDate;
     }
+    public String getInformation() {
+        return information;
+    }
+
+    public void setInformation(String information) {
+        this.information = information;
+    }
+
 }

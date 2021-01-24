@@ -3,7 +3,7 @@ package controllers;
 import beans.Course;
 import models.CourseModel;
 import utils.ServletUtils;
-
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.*;
 import javax.servlet.http.*;
 import javax.servlet.annotation.*;
@@ -37,15 +37,35 @@ public class CourseServlet extends HttpServlet {
                 request.setAttribute("courses",list);
                 ServletUtils.forward("/views/vwProduct/Detail.jsp", request, response);
                 break;
+
+
+
             case "/ByCat":
                 int catID = Integer.parseInt(request.getParameter("id"));
-                List<Map<String,Object>> list1 = CourseModel.GetByCat(catID);
+//                List<Map<String,Object>> list1 = CourseModel.GetByCat(catID);
 
-//                for (String key: list1.get(0).keySet())
-//                {
-//                    System.out.println(key);
-//                }
+                request.setAttribute("CatIDd",catID);
+                final int LIMIT = 4;
+                int currentPage = 1;
+                if(request.getParameter("page") != null){
+                    currentPage = Integer.parseInt(request.getParameter("page"));
+                }
+                int offset = (currentPage - 1) * LIMIT;
+                request.setAttribute("currentPage",currentPage);
+                int total = CourseModel.countByCatID(catID);
+//                System.out.println(total);
+                int nPages = total/LIMIT;
+                if (total % LIMIT > 0)
+                    nPages++;
+                int[] pages = new int[nPages];
+                for(int i=0;i<nPages;i++){
+                    pages[i] = i+1;
+                }
+                request.setAttribute("pages",pages);
 
+//                List<Course> listshiba = CourseModel.pageByCatID(catID,LIMIT,offset);
+//                request.setAttribute("product",listshiba);
+                List<Map<String,Object>> list1 = CourseModel.GetByCat(catID,LIMIT,offset);
                 request.setAttribute("categories",list1);
                 ServletUtils.forward("/views/vwProduct/CourseByCat.jsp",request,response);
                 break;
