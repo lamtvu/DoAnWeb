@@ -1,24 +1,12 @@
 <%@taglib prefix="t" tagdir="/WEB-INF/tags" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" %>
-<jsp:useBean id="chapters" type="java.util.List<beans.Chapter>" scope="request"/>
+
 <jsp:useBean id="courses" type="java.util.List<java.util.Map<java.lang.String,java.lang.Object>>" scope="request"/>
 
 <t:main>
-    <jsp:attribute name="css">
-
-    </jsp:attribute>
     <jsp:attribute name="js">
         <script src="${pageContext.request.contextPath}/public/js/script-detail-product.js"></script>
-        <script>
-            var video = $('video').get(0);
-            $('.table-chapter button').on('click',function (e){
-                video.pause();
-                $('source').attr('src','${pageContext.request.contextPath}/public/clips/'+$(this).attr('chapterID')+'.mp4')
-                video.load();
-                video.play();
-            })
-        </script>
     </jsp:attribute>
     <jsp:body>
 
@@ -40,7 +28,7 @@
              style="background: linear-gradient(to left, #e056fd, #7ed6df);;">
 
             <div class="product d-flex bg-white mt-5 mb-5 mx-auto position-relative")>
-<%--                ${courses.get(0)}--%>
+                    <%--                ${courses.get(0)}--%>
                 <img src="${pageContext.request.contextPath}/public/image/${courses.get(0).get("id")}.jpg" style="width: 400px">
                 <div class="information mx-5">
                     <c:forEach var="c" items="${courses}">
@@ -68,47 +56,10 @@
                             <p class="paragraph " style="display: none; ">${c.get("username")}</p>
                         </div>
 
-                        <div class="buy mt-2 py-3">
-                            <a class="btn btn-outline-success mr-5"
-                               href="${pageContext.request.contextPath}/User/AddToMyCourse?id=${c.get("id")}"
-                               role="button ">Buy Course</a>
-                            <a class="btn btn-outline-danger ml-5"
-                               href="${pageContext.request.contextPath}/User/AddWatchList?id=${c.get("id")} "
-                               role="button ">Add To Watch
-                                List</a>
-                        </div>
 
                     </c:forEach>
-                </div>
-
-            </div>
-            <div class="d-flex">
-                <div class="w-50">
-                    <h2 style="color: white">Chapter</h2>
-                    <table class="table table-chapter">
-                        <c:forEach items="${chapters}" var="t">
-                            <tr>
-                                <td>
-                                    
-                                    <button chapterID="${t.id}" class="btn">${t.name}</button>
-                                </td>
-                            </tr>
-
-                        </c:forEach>
-                    </table>
-                </div>
-                <div class="w-50">
-                    <video style="width: 100%;height: auto" controls>
-                        <source src="${pageContext.request.contextPath}/public/clips/" type="video/mp4">
-                    </video>
-<%--                    <video width="320" height="240" controls>--%>
-<%--                        <source src="${pageContext.request.contextPath}/public/clips/3.mp4" type="video/mp4">--%>
-<%--                    </video>--%>
                 </div>
             </div>
         </div>
     </jsp:body>
-</t:main>
-
-
-
+</t:main

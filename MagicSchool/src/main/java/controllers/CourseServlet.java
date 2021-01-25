@@ -1,6 +1,8 @@
 package controllers;
 
+import beans.Chapter;
 import beans.Course;
+import models.ChapterModel;
 import models.CourseModel;
 import utils.ServletUtils;
 import javax.servlet.annotation.WebServlet;
@@ -33,8 +35,10 @@ public class CourseServlet extends HttpServlet {
 //                {
 //                    System.out.println(key);
 //                }
-                 System.out.println(list.get(0).get("id"));
+                List<Chapter> chapterList = ChapterModel.byCourseID((Integer) list.get(0).get("id"));
+                System.out.println(chapterList.size());
                 request.setAttribute("courses",list);
+                request.setAttribute("chapters",chapterList);
                 ServletUtils.forward("/views/vwProduct/Detail.jsp", request, response);
                 break;
 

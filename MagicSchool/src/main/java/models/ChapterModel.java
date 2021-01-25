@@ -41,4 +41,12 @@ public class ChapterModel {
             conn.createQuery(sql).addParameter("id",id).executeUpdate();
         }
     }
+    public static List<Chapter> byCourseID(int id)
+    {
+        String sql = "select* from chapter where courseID=:id";
+        try(Connection conn = DBUtils.getConnection())
+        {
+            return conn.createQuery(sql).addParameter("id",id).executeAndFetch(Chapter.class);
+        }
+    }
 }

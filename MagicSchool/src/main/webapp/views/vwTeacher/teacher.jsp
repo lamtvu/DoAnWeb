@@ -20,6 +20,7 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-fileinput/5.1.3/js/locales/vi.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-fileinput/5.1.3/themes/fa/theme.min.js"></script>
         <script src="${pageContext.request.contextPath}/public/js/teacher.js"></script>
+        <script src="${pageContext.request.contextPath}/public/js/main.js"></script>
         <script>
             // $('button').on('click',function(){
             //
