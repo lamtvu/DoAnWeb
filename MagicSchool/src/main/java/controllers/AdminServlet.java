@@ -1,5 +1,6 @@
 package controllers;
 
+import at.favre.lib.crypto.bcrypt.BCrypt;
 import beans.Category;
 import beans.Course;
 import beans.User;
@@ -102,8 +103,9 @@ public class AdminServlet extends HttpServlet {
         String username = request.getParameter("addUsername");
         String name = request.getParameter("addName");
         String password = request.getParameter("addPassword");
+        String bcryptHashString = BCrypt.withDefaults().hashToString(12, password.toCharArray());
         String email = request.getParameter("addEmail");
-        UserModel.Add(new User(-1,username,password,name,email,"teacher"));
+        UserModel.Add(new User(-1,username,bcryptHashString,name,email,"teacher"));
         ServletUtils.redirect("/Admin/Index",request,response);
     }
     private void doPostDeleteTeacher(HttpServletRequest request,HttpServletResponse response) throws IOException {

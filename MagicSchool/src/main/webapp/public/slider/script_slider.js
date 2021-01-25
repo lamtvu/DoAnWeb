@@ -14,7 +14,7 @@ $(document).ready(function() {
             $('#autoWidth').removeClass('cs-hidden');
         }
     });
-    $('#autoWidth3').lightSlider({
+    $('#autoWidth2').lightSlider({
         autoWidth: true,
         loop: true,
         onSliderLoad: function() {

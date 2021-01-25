@@ -38,6 +38,14 @@ public  static  List<Map<String,Object>> GetNewCourse(){
         }
     }
 
+    public  static  List<Map<String,Object>> GetFetureCourse(){
+        String sql="SELECT course.id,course.coursename,course.TinyDes,course.FullDes,course.price,course.updateDate,users.`name` as userName,category.`name`as catName,COUNT(evaluate.userID) as num,ROUND(AVG(evaluate.point),1)as point from course left JOIN evaluate ON course.id = evaluate.courseID,users,category WHERE users.id = course.teacherID and course.catID = category.id GROUP BY course.id ORDER BY (course.price) DESC Limit 10";
+        try(Connection conn = DBUtils.getConnection())
+        {
+            return conn.createQuery(sql).executeAndFetchTable().asList();
+        }
+    }
+
 
 
 

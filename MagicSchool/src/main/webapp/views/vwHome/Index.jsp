@@ -3,7 +3,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <jsp:useBean id="courses" type="java.util.List<java.util.Map<java.lang.String,java.lang.Object>>" scope="request"/>
-
+<jsp:useBean id="coursesFeature" type="java.util.List<java.util.Map<java.lang.String,java.lang.Object>>" scope="request"/>
 <t:main>
     <jsp:attribute name="css">
         <link rel="stylesheet" href="${pageContext.request.contextPath}/public/slider/styleIndex.css">
@@ -20,7 +20,7 @@
                     <p>New Course</p>
                 </div>
             </div>
-            <div class="slider">
+            <div class="slider mb-5">
                 <ul id="autoWidth1" class="cs-hidden">
                     <c:forEach var="c" items="${courses}">
                         <li class="item-a">
@@ -51,6 +51,47 @@
                     </c:forEach>
                 </ul>
             </div>
+
+
+            <div class="box1">
+                <div class="box2">
+                    <p>Feature Course</p>
+                </div>
+            </div>
+            <div class="slider">
+                <ul id="autoWidth2" class="cs-hidden">
+                    <c:forEach var="f" items="${coursesFeature}">
+                        <li class="item-a">
+                            <div class="box">
+                                <div class="slide-img">
+                                    <img alt="" src="${pageContext.request.contextPath}/public/image/${f.id}.jpg">
+                                    <div class="overlay">
+                                        <a href="${pageContext.request.contextPath}/Course/Detail?id=${f.get("id")}" class="buy-btn">Detail</a>
+                                    </div>
+                                </div>
+                                <div class="detail-box">
+                                    <div class="type">
+                                        <p class="name-course">${f.get("coursename")}</p>
+                                        <p>${c.get("catname")}</p>
+                                        <span class="teacher">${f.get("username")}</span>
+                                        <div class="rating d-flex">
+                                            <span class="badge bg-success" style="margin: 0;">
+                                                ${f.get("point")}/10
+                                            </span>
+                                            <span style="margin-left: 20px;" class="badge bg-danger">${f.get("num")} review</span>
+                                        </div>
+                                        <span class="price">$ ${f.get("price")}</span>
+                                        <span class="seller">Bestseller</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                    </c:forEach>
+                </ul>
+            </div>
+
+
+
         </div>
     </jsp:body>
 </t:main>

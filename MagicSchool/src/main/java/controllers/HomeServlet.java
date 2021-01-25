@@ -35,6 +35,9 @@ public class HomeServlet extends HttpServlet {
 //                {
 //                    System.out.println(key);
 //                }
+                List<Map<String,Object>> list1 = CourseModel.GetFetureCourse();
+                request.setAttribute("coursesFeature",list1);
+
                 ServletUtils.forward("/views/vwHome/Index.jsp",request,response);
                 break;
             default:
