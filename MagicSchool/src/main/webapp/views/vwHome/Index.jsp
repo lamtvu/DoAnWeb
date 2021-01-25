@@ -14,6 +14,7 @@
         <script src="${pageContext.request.contextPath}/public/slider/Lightsliderfiles/lightslider.js"></script>
     </jsp:attribute>
     <jsp:body>
+        <jsp:include page="../parital/billboard.jsp"/>
         <div class="container mt-5 mb-5">
             <div class="box1">
                 <div class="box2">
