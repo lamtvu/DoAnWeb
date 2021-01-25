@@ -413,7 +413,7 @@
                                       </c:forEach>
                                     </table>
                                 </div>
-                            </div
+                            </div>
                         </c:if>
                     </c:forEach>
                 </div>

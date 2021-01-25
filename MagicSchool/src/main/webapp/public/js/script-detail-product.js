@@ -1,6 +1,6 @@
-const chooseInfo = document.getElementById('more-infor');
-const choose = document.getElementsByClassName('choose');
-const paragraph = document.getElementsByClassName('paragraph');
+const chooseInfo = $('#more-infor');
+const choose = $('.choose');
+const paragraph = $('.paragraph');
 
 
 function styleItem(a, b) {

@@ -139,5 +139,16 @@ public  static  List<Map<String,Object>> GetNewCourse(){
             return conn.createQuery(sql).executeAndFetchTable().asList();
         }
     }
+    public static Boolean IsHas(int userid,int courseid){
+        String sql = "select* from ownlist where userID=:userid and courseID=:courseid";
+        try(Connection conn = DBUtils.getConnection()){
+            List<Map<String,Object>> list = conn.createQuery(sql).addParameter("userid",userid)
+                                                                    .addParameter("courseid",courseid).executeAndFetchTable().asList();
+            if(list.size()==0)
+                return false;
+            else
+                return true;
+        }
+    }
 //    GROUP BY course.id
 }

@@ -2,6 +2,7 @@ package controllers;
 
 import beans.Chapter;
 import beans.Course;
+import beans.User;
 import models.ChapterModel;
 import models.CourseModel;
 import utils.ServletUtils;
@@ -29,6 +30,8 @@ public class CourseServlet extends HttpServlet {
 //                } else {
 //                    ServletUtils.redirect("/Home", request, response);
 //                }
+                HttpSession session = request.getSession();
+                User user = (User) session.getAttribute("authUser");
                 int proID = Integer.parseInt(request.getParameter("id"));
                 List<Map<String,Object>> list = CourseModel.GetByID(proID);
 //                for (String key: list.get(0).keySet())
@@ -36,7 +39,10 @@ public class CourseServlet extends HttpServlet {
 //                    System.out.println(key);
 //                }
                 List<Chapter> chapterList = ChapterModel.byCourseID((Integer) list.get(0).get("id"));
-                System.out.println(chapterList.size());
+//                System.out.println(chapterList.size());
+
+                request.setAttribute("isOwnlist",CourseModel.IsHas(user.getId(),(Integer) list.get(0).get("id")));
+                System.out.println(CourseModel.IsHas(user.getId(),(Integer) list.get(0).get("id")));
                 request.setAttribute("courses",list);
                 request.setAttribute("chapters",chapterList);
                 ServletUtils.forward("/views/vwProduct/Detail.jsp", request, response);

@@ -58,29 +58,29 @@
                     <p>Feature Course</p>
                 </div>
             </div>
-            <div class="slider">
-                <ul id="autoWidth2" class="cs-hidden">
-                    <c:forEach var="f" items="${coursesFeature}">
+            <div class="slider mb-5">
+                <ul id="autoWidth" class="cs-hidden">
+                    <c:forEach var="c" items="${coursesFeature}">
                         <li class="item-a">
                             <div class="box">
                                 <div class="slide-img">
-                                    <img alt="" src="${pageContext.request.contextPath}/public/image/${f.id}.jpg">
+                                    <img alt="" src="${pageContext.request.contextPath}/public/image/${c.id}.jpg">
                                     <div class="overlay">
-                                        <a href="${pageContext.request.contextPath}/Course/Detail?id=${f.get("id")}" class="buy-btn">Detail</a>
+                                        <a href="${pageContext.request.contextPath}/Course/Detail?id=${c.get("id")}" class="buy-btn">Detail</a>
                                     </div>
                                 </div>
                                 <div class="detail-box">
                                     <div class="type">
-                                        <p class="name-course">${f.get("coursename")}</p>
+                                        <p class="name-course">${c.get("coursename")}</p>
                                         <p>${c.get("catname")}</p>
-                                        <span class="teacher">${f.get("username")}</span>
+                                        <span class="teacher">${c.get("username")}</span>
                                         <div class="rating d-flex">
                                             <span class="badge bg-success" style="margin: 0;">
-                                                ${f.get("point")}/10
+                                                ${c.get("point")}/10
                                             </span>
-                                            <span style="margin-left: 20px;" class="badge bg-danger">${f.get("num")} review</span>
+                                            <span style="margin-left: 20px;" class="badge bg-danger">${c.get("num")} review</span>
                                         </div>
-                                        <span class="price">$ ${f.get("price")}</span>
+                                        <span class="price">$ ${c.get("price")}</span>
                                         <span class="seller">Bestseller</span>
                                     </div>
                                 </div>
@@ -89,8 +89,6 @@
                     </c:forEach>
                 </ul>
             </div>
-
-
 
         </div>
     </jsp:body>
