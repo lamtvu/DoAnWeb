@@ -151,4 +151,15 @@ public  static  List<Map<String,Object>> GetNewCourse(){
         }
     }
 //    GROUP BY course.id
+    //Serach by name course
+    public static List<Map<String,Object>> GetNameCourse(String name){
+        String sql="SELECT course.id,course.coursename as coursename,course.TinyDes,course.FullDes,course.price as price,course.updateDate,course.catID as catID,users.`name` as userName,category.`name`as catName,COUNT(evaluate.userID) as num,ROUND(AVG(evaluate.point),1)as point from course left JOIN evaluate ON course.id = evaluate.courseID,users,category WHERE  users.id = course.teacherID and course.catID = category.id and course.coursename like" + "'%"+name+"%'" +" GROUP BY course.id";
+//        String sql="select * from course where course.coursename like" + "'%"+name+"%'";
+        try(Connection conn = DBUtils.getConnection()){
+            return conn.createQuery(sql)
+//                    .addParameter("name",name)
+                    .executeAndFetchTable().asList();
+
+        }
+    }
 }

@@ -79,6 +79,19 @@ public class CourseServlet extends HttpServlet {
                 request.setAttribute("categories",list1);
                 ServletUtils.forward("/views/vwProduct/CourseByCat.jsp",request,response);
                 break;
+
+            case "/ByCourse":
+                String namecourse = "";
+                namecourse = request.getParameter("search");
+                System.out.println(namecourse);
+
+
+                List<Map<String,Object>> list3 = CourseModel.GetNameCourse(namecourse);
+
+
+                request.setAttribute("coursename",list3);
+                ServletUtils.forward("/views/vwProduct/CourseByName.jsp",request,response);
+                break;
             default:
                 ServletUtils.redirect("/NotFound", request, response);
                 break;
@@ -87,7 +100,11 @@ public class CourseServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        String path = request.getPathInfo();
+        switch (path){
 
+
+        }
     }
 
 }

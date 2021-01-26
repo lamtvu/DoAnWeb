@@ -34,7 +34,7 @@
     </div>
     <div class=" border-normal-magic-school h-75 ml-3 mr-3 bg-lightgray-magic-school"
          style="border-radius:50px; width: 40%;">
-        <form action="" class="w-100 d-flex align-items-center h-100">
+        <form method="get" action="${pageContext.request.contextPath}/Course/ByCourse" class="w-100 d-flex align-items-center h-100">
             <button class="btn-magic-school bg-lightgray-magic-school ml-3 mr-3" style="width:30px" type="submit">
                 <i class="fa fa-search color-lightgray-magic-school font-size-20 font-weight-lighter"
                    aria-hidden="true"></i>
