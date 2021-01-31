@@ -71,7 +71,8 @@ public class ChapterModel {
             conn.createQuery(sql)
                     .addParameter("name",chapter.getName())
                     .addParameter("publiorprivate",chapter.getPubliOrPrivate())
-                    .addParameter("updateDate",chapter.getUpdateDate())
+                    .addParameter("courseid",chapter.getCourseID())
+                    .addParameter("updatedate",chapter.getUpdateDate())
                     .addParameter("id",chapter.getId())
                     .executeUpdate();
         }
