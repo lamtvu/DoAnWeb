@@ -205,7 +205,7 @@
                     </p>
                     <div>
                         <c:choose>
-                            <c:when test="${courses.get(0).get('complete') == 'yes'}">
+                            <c:when test="${courses.get(0).get('complete')=='yes'}">
                                 <span class="badge bg-secondary">complete</span>
                             </c:when>
                             <c:otherwise>
@@ -367,7 +367,7 @@
             z-index:10;display:none;border-radius:50px">
             <form method="post" action="${pageContext.request.contextPath}/Teacher/UpdateCoursePrice">
                 <input type="hidden" name="courseID" value="${courses.get(0).get("id")}">
-                <input type="text" name="newPrice" id="newPrice" placeholder="New Price" autocomplete="off"
+                <input type="text" name="newPrice" id="newPrice" placeholder="New Price" autocomplete="off" pattern="[0-9]{1,10}"
                        class="color-lightgray-magic-school border-0 p-3" style="border-radius: 50px" value="${courses.get(0).get("price")}">
                 <button class="btn-magic-school p-3 m-3 bg-light text-info" type="submit"
                         style="border-radius: 50px; font-weight: bold;">Apply</button>

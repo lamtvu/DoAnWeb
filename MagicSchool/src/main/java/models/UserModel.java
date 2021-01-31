@@ -65,7 +65,7 @@ public class UserModel {
     }
 
     public static List<Course> FindCourseByUserID(int id){
-        String sql = "select course.id,course.TinyDes,course.price,course.coursename from course,users,ownlist WHERE course.id = ownlist.courseID AND ownlist.userID = users.id AND users.id =:id";
+        String sql = "select course.id,course.TinyDes,course.complete,course.price,course.coursename from course,users,ownlist WHERE course.id = ownlist.courseID AND ownlist.userID = users.id AND users.id =:id";
         try (Connection con = DBUtils.getConnection()) {
             return con.createQuery(sql)
                     .addParameter("id", id)

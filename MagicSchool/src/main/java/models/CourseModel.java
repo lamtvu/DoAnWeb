@@ -50,7 +50,7 @@ public  static  List<Map<String,Object>> GetNewCourse(){
 
 
     public static List<Map<String, Object>> GetByID(int id){
-        String sql="SELECT course.id,users.information as informationd,course.coursename,course.TinyDes,course.FullDes,course.price,course.updateDate,users.`name` as userName,category.`name`as catName,COUNT(evaluate.userID) as num,ROUND(AVG(evaluate.point),1)as point FROM users,category,course left JOIN evaluate on course.id = evaluate.courseID WHERE users.id = course.teacherID AND course.catID = category.id AND course.id =:id GROUP BY course.id";
+        String sql="SELECT course.id,course.complete,users.information as informationd,course.coursename,course.TinyDes,course.FullDes,course.price,course.updateDate,users.`name` as userName,category.`name`as catName,COUNT(evaluate.userID) as num,ROUND(AVG(evaluate.point),1)as point FROM users,category,course left JOIN evaluate on course.id = evaluate.courseID WHERE users.id = course.teacherID AND course.catID = category.id AND course.id =:id GROUP BY course.id";
         try(Connection conn = DBUtils.getConnection()){
             return conn.createQuery(sql)
                     .addParameter("id",id)
