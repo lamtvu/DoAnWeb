@@ -74,7 +74,7 @@
         </script>
     </jsp:attribute>
     <jsp:body>
-        <c:if test="${auth == false}">
+        <c:if test="${auth == false || isOwnlist == false}">
             <div class="d-none">
                 <div class="editor"></div>
             </div>
@@ -84,7 +84,46 @@
                 <source src="" type="video/mp4">
             </video>
         </div>
-
+        <div class="w-100 h-100 position-fixed background-opacity"
+             style="z-index: 9;background-color:#341f97;opacity: 0.6;top:0; display:none;">
+            <div class="circle-0"
+                 style="left:80%;background-color:white;z-index: 0;width: 10px;height: 10px;animation-duration: 15s;">
+            </div>
+            <div class="circle-0"
+                 style="left:90%;background-color:white;z-index: 0;width: 30px;height: 30px;animation-duration: 70s;">
+            </div>
+            <div class="circle-0"
+                 style="left:10%;background-color:white;z-index: 0;width: 10px;height: 10px;animation-duration: 55s;">
+            </div>
+            <div class="circle-0"
+                 style="left:20%;background-color:white;z-index: 0;width: 70px;height: 70px;animation-duration: 40s;">
+            </div>
+            <div class="circle-0"
+                 style="left:30%;background-color:white;z-index: 0;width: 10px;height: 10px;animation-duration: 25s;">
+            </div>
+            <div class="circle-0"
+                 style="left:40%;background-color:white;z-index: 0;width: 30px;height: 30px;animation-duration: 20s;">
+            </div>
+            <div class="circle-0"
+                 style="left:40%;background-color:white;z-index: 0;width: 10px;height: 10px;animation-duration: 15s;">
+            </div>
+            <div class="circle-0"
+                 style="left:45%;background-color:white;z-index: 0;width: 30px;height: 30px;animation-duration: 70s;">
+            </div>
+            <div class="circle-0"
+                 style="left:60%;background-color:white;z-index: 0;width: 10px;height: 10px;animation-duration: 55s;">
+            </div>
+            <div class="circle-0"
+                 style="left:65%;background-color:white;z-index: 0;width: 70px;height: 70px;animation-duration: 40s;">
+            </div>
+            <div class="circle-0"
+                 style="left:75%;background-color:white;z-index: 0;width: 10px;height: 10px;animation-duration: 25s;">
+            </div>
+            <div class="circle-0"
+                 style="left:90%;background-color:white;z-index: 0;width: 30px;height: 30px;animation-duration: 20s;">
+            </div>
+            <button class="btn text-light" style="font-size:50px"> <i class="fas fa-times-circle"></i></button>
+        </div>
         <div class="container-fluid position-fixed table-fixed-magic-school" style="box-shadow: 1px 1px 10px #192a56;color:white;display: none;background-color: #182C61; top:0;z-index: 5;height: 50px">
             <p style="font-weight: bold; color: white; margin: 0">${courses.get(0).get("coursename")}<p>
             <span class="badge bg-warning">${courses.get(0).get("point")}/10</span>
