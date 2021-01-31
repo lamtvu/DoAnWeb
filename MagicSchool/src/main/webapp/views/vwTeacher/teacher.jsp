@@ -175,7 +175,7 @@
                             <i class="fas fa-pen" style="color:white"></i>
                         </button>
                     </div> <br>
-                    <div userID="${authUser.information}" class="p-3 m-1"
+                    <div userID="${authUser.id}" class="p-3 m-1"
                          style="background-color:#fad390 ;border-radius: 50px; display: inline-block;">
                         <div>
                             <span style="color:white; font-weight: bold; font-size:105%;">Information</span>
