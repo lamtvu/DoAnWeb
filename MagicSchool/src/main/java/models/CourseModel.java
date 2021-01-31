@@ -152,14 +152,24 @@ public  static  List<Map<String,Object>> GetNewCourse(){
     }
 //    GROUP BY course.id
     //Serach by name course
-    public static List<Map<String,Object>> GetNameCourse(String name){
-        String sql="SELECT course.id,course.coursename as coursename,course.TinyDes,course.FullDes,course.price as price,course.updateDate,course.catID as catID,users.`name` as userName,category.`name`as catName,COUNT(evaluate.userID) as num,ROUND(AVG(evaluate.point),1)as point from course left JOIN evaluate ON course.id = evaluate.courseID,users,category WHERE  users.id = course.teacherID and course.catID = category.id and course.coursename like" + "'%"+name+"%'" +" GROUP BY course.id";
+public static List<Map<String,Object>> GetNameCourse(String name,int limit, int offset){
+    String sql="SELECT course.id,course.coursename as coursename,course.TinyDes,course.FullDes,course.price as price,course.updateDate,course.catID as catID,users.`name` as userName,category.`name`as catName,COUNT(evaluate.userID) as num,ROUND(AVG(evaluate.point),1)as point from course left JOIN evaluate ON course.id = evaluate.courseID,users,category WHERE  users.id = course.teacherID and course.catID = category.id and course.coursename like" + "'%"+name+"%'" +" GROUP BY course.coursename limit :limit offset :offset";
 //        String sql="select * from course where course.coursename like" + "'%"+name+"%'";
-        try(Connection conn = DBUtils.getConnection()){
-            return conn.createQuery(sql)
+    try(Connection conn = DBUtils.getConnection()){
+        return conn.createQuery(sql)
 //                    .addParameter("name",name)
-                    .executeAndFetchTable().asList();
+                .addParameter("limit",limit)
+                .addParameter("offset",offset)
+                .executeAndFetchTable().asList();
 
+    }
+}
+
+    public static int countByName(String name) {
+        String sql = "select count(*) from course where course.coursename like" + "'%"+name+"%'";
+        try (Connection con = DBUtils.getConnection()) {
+            return con.createQuery(sql)
+                    .executeScalar(Integer.class);
         }
     }
 }

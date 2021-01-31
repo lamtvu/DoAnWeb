@@ -17,9 +17,12 @@
                                 <div class="card-body">
                                     <h5 class="card-title text-center">${c.coursename}</h5>
                                         <p class="text-center">${c.tinyDes}</p>
-                                    <div class="d-flex justify-content-center">
-                                        <a name="#" id="" class="btn btn-outline-danger mt-1" href="${pageContext.request.contextPath}/User/DeleteWatchList?id=${c.id}" role="button">
+                                    <div class="d-flex justify-content-between">
+                                        <a name="#" id="" class="btn btn-outline-danger" href="${pageContext.request.contextPath}/User/DeleteWatchList?id=${c.id}" role="button">
                                             <i class="fa fa-trash" aria-hidden="true"></i> Delete
+                                        </a>
+                                        <a name="#" id="" class="btn btn-outline-success" href="${pageContext.request.contextPath}/Course/Detail?id=${c.id}" role="button">
+                                            <i class="fa fa-eye" aria-hidden="true"></i> Detail
                                         </a>
                                     </div>
 

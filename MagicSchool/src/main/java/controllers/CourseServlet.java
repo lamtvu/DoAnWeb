@@ -83,12 +83,30 @@ public class CourseServlet extends HttpServlet {
             case "/ByCourse":
                 String namecourse = "";
                 namecourse = request.getParameter("search");
-                System.out.println(namecourse);
+                request.setAttribute("CatIDd",namecourse);
 
+                final int LIMIT1 = 4;
+                int currentPage1 = 1;
+                if(request.getParameter("page") != null){
+                    currentPage1 = Integer.parseInt(request.getParameter("page"));
+                }
+                int offset1 = (currentPage1 - 1) * LIMIT1;
+                request.setAttribute("currentPage",currentPage1);
+                int total1 = CourseModel.countByName(namecourse);
+                System.out.println(total1);
 
-                List<Map<String,Object>> list3 = CourseModel.GetNameCourse(namecourse);
+                int nPages1 = total1/LIMIT1;
+                if (total1 % LIMIT1 > 0)
+                    nPages1++;
+                int[] pages1 = new int[nPages1];
+                for(int i=0;i<nPages1;i++){
+                    pages1[i] = i+1;
+                }
+                request.setAttribute("pages",pages1);
 
+//                List<Map<String,Object>> list2 = CourseModel.GetByName(namecourse);
 
+                List<Map<String,Object>> list3 = CourseModel.GetNameCourse(namecourse,LIMIT1,offset1);
                 request.setAttribute("coursename",list3);
                 ServletUtils.forward("/views/vwProduct/CourseByName.jsp",request,response);
                 break;

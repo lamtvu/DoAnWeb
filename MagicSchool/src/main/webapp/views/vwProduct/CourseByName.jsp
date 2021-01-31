@@ -71,6 +71,36 @@
 <%--                    </ul>--%>
 <%--                </nav>--%>
 <%--            </div>--%>
+            <div class="card-footer d-flex justify-content-center">
+                <nav>
+                    <ul class="pagination">
+                        <li class="page-item">
+                            <a class="page-link" href="#" tabindex="-1">
+                                <i class="fa fa-fast-backward" aria-hidden="true"></i>
+                            </a>
+                        </li>
+                        <c:forEach var="p" items="${pages}">
+                            <c:choose>
+                                <c:when test="${p == currentPage}">
+                                    <li class="page-item active">
+                                        <a class="page-link" href="">${p}</a>
+                                    </li>
+                                </c:when>
+                                <c:otherwise>
+                                    <li class="page-item">
+                                        <a class="page-link" href="?search=${CatIDd}&page=${p}">${p}</a>
+                                    </li>
+                                </c:otherwise>
+                            </c:choose>
+                        </c:forEach>
+                        <li class="page-item">
+                            <a class="page-link" href="#">
+                                <i class="fa fa-fast-forward" aria-hidden="true"></i>
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
         </div>
     </jsp:body>
 </t:main>
