@@ -104,7 +104,7 @@
             </div>
         </div>
         <div class="w-100 h-100 position-fixed background-opacity"
-             style="z-index: 3;background-color:#341f97;opacity: 0.6;top:0; display:none;">
+             style="z-index: 9;background-color:#341f97;opacity: 0.6;top:0; display:none;">
             <div class="circle-0"
                  style="left:80%;background-color:white;z-index: 0;width: 10px;height: 10px;animation-duration: 15s;">
             </div>
@@ -146,7 +146,7 @@
 
         <!-- update Full Name -->
         <div class="edit-window-magic-school edit-name-window-magic-school "
-             style="position: fixed; left:50%; top:100px; transform: translate(-50%);display: none;z-index: 4;">
+             style="position: fixed; left:50%; top:100px; transform: translate(-50%);display: none;z-index: 10;">
             <p style="font-weight:bold; color:white; font-size:120%;text-align: center;">Update Full Name</p>
             <form method="post" action="${pageContext.request.contextPath}/Student/UpdateName">
                 <input type="text" name="newName" id="newName" placeholder="Full Name" autocomplete="off"
@@ -157,7 +157,7 @@
         </div>
         <!-- update email -->
         <div class="edit-window-magic-school edit-email-window-magic-school "
-             style="position: fixed; left:50%; top:100px; transform: translate(-50%); display: none;z-index: 4;">
+             style="position: fixed; left:50%; top:100px; transform: translate(-50%); display: none;z-index: 10;">
             <p style="font-weight:bold; color:white; font-size:120%;text-align: center;">Update Email</p>
             <form method="post" action="${pageContext.request.contextPath}/Student/UpdateEmail">
                 <input type="hidden" name="editEmailUserID" id="editEmailUserID" style="display:none">
@@ -171,7 +171,7 @@
         </div>
         <!-- update password -->
         <div class="edit-window-magic-school edit-password-window-magic-school"
-             style="position: fixed; left:50%; top:100px; transform: translate(-50%);z-index:2;display:none;z-index:4">
+             style="position: fixed; left:50%; top:100px; transform: translate(-50%);display:none;z-index:10">
             <form method="post" class="d-flex justify-content-between w-100 h-100" autocomplete="off"
                   action="${pageContext.request.contextPath}/Student/UpdatePassword" style="flex-direction: column;">
                 <p style="font-weight:bold; color:white; font-size:120%;text-align: center;">Change Password</p>

@@ -21,8 +21,6 @@ import java.io.IOException;
 public class AdminServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String path = request.getPathInfo();
-        System.out.println("01111");
-        System.out.println(path);
         switch (path){
             case "/AddCategory":
                 doPostAddCat(request,response);
@@ -53,16 +51,58 @@ public class AdminServlet extends HttpServlet {
                 break;
             case "/UpdateTeacherPass":
                 doPostUpdateTeacherPassword(request,response);
-
+                break;
+            case "/UpdateEnableUser":
+                doPostEnableUser(request,response);
+                break;
+            case "/UpdateDisableUser":
+                doPostDisableUser(request,response);
+                break;
+            case "/UpdateEnableCourse":
+                doPostEnableCourse(request,response);
+                break;
+            case "/UpdateDisableCourse":
+                doPostDisableCourse(request,response);
                 break;
             default:
                 ServletUtils.redirect("/NotFound",request,response);
                 break;
         }
     }
+    private void goBack(HttpServletRequest request,HttpServletResponse response) throws IOException {
+        String url = request.getHeader("referer");
+        if(url == null) url="/Admin/Index";
+        ServletUtils.redirect(url,request,response);
+    }
+    private void doPostDisableCourse(HttpServletRequest request,HttpServletResponse response) throws IOException {
+        int id = Integer.parseInt(request.getParameter("courseID"));
+        Course course= CourseModel.findByID(id).get();
+        course.setEnable("false");
+        CourseModel.Update(id,course);
+//        ServletUtils.redirect("/Admin/Index",request,response);
+        goBack(request,response);
+    }
+    private void doPostEnableCourse(HttpServletRequest request,HttpServletResponse response) throws IOException {
+        int id = Integer.parseInt(request.getParameter("courseID"));
+        Course course= CourseModel.findByID(id).get();
+        course.setEnable("true");
+        CourseModel.Update(id,course);
+//        ServletUtils.redirect("/Admin/Index",request,response);
+        goBack(request,response);
+    }
+    private void doPostEnableUser(HttpServletRequest request,HttpServletResponse response) throws IOException {
+        int id =Integer.parseInt( request.getParameter("userID"));
+        UserModel.Enable(id);
+//        ServletUtils.redirect("/Admin/Index",request,response);
+        goBack(request,response);
+    }
+    private void doPostDisableUser(HttpServletRequest request,HttpServletResponse response) throws IOException {
+        int id =Integer.parseInt( request.getParameter("userID"));
+        UserModel.Disabled(id);
+//        ServletUtils.redirect("/Admin/Index",request,response);
+        goBack(request,response);
+    }
     private void doPostUpdateTeacherPassword(HttpServletRequest request,HttpServletResponse response) throws IOException {
-        System.out.println(request.getParameter("teacherID"));
-        System.out.println(request.getParameter("newPass"));
         int ID = Integer.parseInt(request.getParameter("teacherID"));
         String password = request.getParameter("newPass");
         UserModel.UpdatePassword(ID,password);
@@ -105,7 +145,7 @@ public class AdminServlet extends HttpServlet {
         String password = request.getParameter("addPassword");
         String bcryptHashString = BCrypt.withDefaults().hashToString(12, password.toCharArray());
         String email = request.getParameter("addEmail");
-        UserModel.Add(new User(-1,username,bcryptHashString,name,email,"teacher"));
+        UserModel.Add(new User(-1,username,bcryptHashString,name,email,"teacher","true",""));
         ServletUtils.redirect("/Admin/Index",request,response);
     }
     private void doPostDeleteTeacher(HttpServletRequest request,HttpServletResponse response) throws IOException {
@@ -139,15 +179,41 @@ public class AdminServlet extends HttpServlet {
     }
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String path = request.getPathInfo();
+        HttpSession session = request.getSession();
+        User user = (User) session.getAttribute("authUser");
+        if(!user.getOffice().equals("admin"))
+        {
+            ServletUtils.redirect("/Information",request,response);
+            return;
+        }
+
         switch (path)
         {
             case "/Index":
-                System.out.println("aaa");
-                List<Course> list = CourseModel.getAll();
-                System.out.println("aaa");
+//                List<Course> list = CourseModel.getAll();
+                String username = "";
+                int catid = 0;
+                if(request.getParameter("categorySearch")!=null)
+                {
+                    catid =Integer.parseInt( request.getParameter("categorySearch"));
+                }
+                if(request.getParameter("teacherSearch")!=null)
+                {
+                    username = request.getParameter("teacherSearch");
+                }
+                List<Course> list ;
+                if(catid !=0 && CategoryModel.findByID(catid).get().getParentCat() == 0)
+                {
+                    list = CourseModel.SearchByTeacherAndCat(username,catid);
+                }
+                else {
+                    list = CourseModel.SearchByTeacherAndSubCat(username,catid);
+                }
                 request.setAttribute("courses",list);
+                List<User> students = UserModel.getAllUsersByOffice("student");
                 List<User> list1 = UserModel.getAllUsersByOffice("teacher");
                 request.setAttribute("teachers",list1);
+                request.setAttribute("students",students);
                 ServletUtils.forward("/views/vwAdmin/Index.jsp",request,response);
                 break;
             default:

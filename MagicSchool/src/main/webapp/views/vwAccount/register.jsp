@@ -101,6 +101,10 @@
                     formaction="${pageContext.request.contextPath}/Account/Register">
                 Register
             </button>
+            <a type="submit" class="color-lightgray-magic-school w-50 mt-4 btn-magic-school p-3" href="${pageContext.request.contextPath}/Home/Index"
+                    style="margin-left:25%;border-radius: 50px;font-weight: bold; background-color: white; text-align: center">
+                Home
+            </a>
         </form>
     </div>
 </div>

@@ -4,13 +4,13 @@ import java.util.Date;
 
 public class Course {
     int id, teacherID, price, catID;
-    String complete,coursename, TinyDes, FullDes;
+    String complete,coursename, TinyDes, FullDes,enable;
     Date updateDate;
 
     public Course() {
     }
 
-    public Course(int id, int teacherID, int price, int catID, String complete, String coursename, String tinyDes, String fullDes, Date updateDate) {
+    public Course(int id, int teacherID, int price, int catID, String complete, String coursename, String tinyDes, String fullDes, String enable, Date updateDate) {
         this.id = id;
         this.teacherID = teacherID;
         this.price = price;
@@ -19,7 +19,16 @@ public class Course {
         this.coursename = coursename;
         TinyDes = tinyDes;
         FullDes = fullDes;
+        this.enable = enable;
         this.updateDate = updateDate;
+    }
+
+    public void setEnable(String enable) {
+        this.enable = enable;
+    }
+
+    public String getEnable() {
+        return enable;
     }
 
     public void setId(int id) {

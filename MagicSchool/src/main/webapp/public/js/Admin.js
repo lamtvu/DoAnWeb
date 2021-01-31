@@ -72,6 +72,27 @@ $('.add-teacher-magic-school').on('click', function () {
     OpenBackground();
     $('.add-teacher-window-magic-school').css('display', 'block');
 })
+$('.edit-user-enable-magic-school').on('click',function() {
+    OpenBackground();
+    $('#userEnableID').val($(this).parent().attr('userID'));
+    $('.enable-user-window-magic-school').css('display', 'block');
+})
+$('.edit-user-disable-magic-school').on('click',function() {
+    OpenBackground();
+    $('#userDisableID').val($(this).parent().attr('userID'));
+    $('.disable-user-window-magic-school').css('display', 'block');
+})
+
+$('.edit-course-disable-magic-school').on('click',function() {
+    OpenBackground();
+    $('#courseDisableID').val($(this).parent().attr('courseID'));
+    $('.disable-course-window-magic-school').css('display', 'block');
+})
+$('.edit-course-enable-magic-school').on('click',function() {
+    OpenBackground();
+    $('#courseEnableID').val($(this).parent().attr('courseID'));
+    $('.enable-course-window-magic-school').css('display', 'block');
+})
 function checkFullName(element) {
     if ($(element).val() == 0) {
         alert("Full name is not empty");

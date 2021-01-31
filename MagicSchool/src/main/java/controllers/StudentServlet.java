@@ -69,6 +69,13 @@ public class StudentServlet extends HttpServlet {
     }
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String path = request.getPathInfo();
+        HttpSession session = request.getSession();
+        User user = (User) session.getAttribute("authUser");
+        if(!user.getOffice().equals("student"))
+        {
+            ServletUtils.redirect("/Information",request,response);
+            return;
+        }
         switch(path){
             case"/Index":
                 ServletUtils.forward("/views/vwUser/index.jsp",request,response);

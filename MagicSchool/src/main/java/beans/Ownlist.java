@@ -1,15 +1,27 @@
 package beans;
 
+import java.util.Date;
+
 public class Ownlist {
     int id,userID,courseID;
+    Date date;
 
     public Ownlist() {
     }
 
-    public Ownlist(int id, int userID, int courseID) {
+    public Ownlist(int id, int userID, int courseID, Date date) {
         this.id = id;
         this.userID = userID;
         this.courseID = courseID;
+        this.date = date;
+    }
+
+    public void setDate(Date date) {
+        this.date = date;
+    }
+
+    public Date getDate() {
+        return date;
     }
 
     public int getId() {

@@ -10,6 +10,11 @@
 <jsp:attribute name="css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/public/css/main.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css">
+    <style>
+        html{
+            scroll-behavior: smooth;
+        }
+    </style>
 </jsp:attribute>
     <jsp:attribute name="js">
         <script src="${pageContext.request.contextPath}/public/js/main.js"></script>
@@ -161,10 +166,35 @@
 
 
 
-
+        <div class="position-fixed" style="z-index: 5;box-shadow: 1px 1px 5px #869791">
+            <table class="table table-hover table-light">
+               <tbody>
+                    <tr>
+                        <td>
+                            <a href="#category" class="link-secondary">Category</a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <a href="#course" class="link-secondary">Course</a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <a href="#teacher" class="link-secondary">Teacher</a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <a href="#student" class="link-secondary">Student</a>
+                        </td>
+                    </tr>
+               </tbody>
+            </table>
+        </div>
 
         <div class="w-100 h-100 position-fixed background-opacity"
-             style="z-index: 3;background-color:#341f97;opacity: 0.6;top:0; display:none;">
+             style="z-index: 9;background-color:#341f97;opacity: 0.6;top:0; display:none;">
             <div class="circle-0"
                  style="left:80%;background-color:white;z-index: 0;width: 10px;height: 10px;animation-duration: 15s;">
             </div>
@@ -206,7 +236,7 @@
 
         <!-- update Full Name -->
         <div class="edit-window-magic-school edit-name-window-magic-school "
-             style="position: fixed; left:50%; top:100px; transform: translate(-50%);display: none;z-index: 4;">
+             style="position: fixed; left:50%; top:100px; transform: translate(-50%);display: none;z-index: 10;">
             <p style="font-weight:bold; color:white; font-size:120%;text-align: center;">Update Full Name</p>
             <form method="post" action="${pageContext.request.contextPath}/Admin/UpdateName">
                 <input type="text" name="newName" id="newName" placeholder="Full Name" autocomplete="off"
@@ -216,7 +246,7 @@
             </form>
         </div>
         <!-- update email -->
-        <div class="edit-window-magic-school edit-email-window-magic-school " style="position: fixed; left:50%; top:100px; transform: translate(-50%); display: none;z-index: 4;">
+        <div class="edit-window-magic-school edit-email-window-magic-school " style="position: fixed; left:50%; top:100px; transform: translate(-50%); display: none;z-index: 10;">
             <p style="font-weight:bold; color:white; font-size:120%;text-align: center;">Update Email</p>
             <form method="post" action="${pageContext.request.contextPath}/Admin/UpdateEmail">
                 <input type="hidden" name="editEmailUserID" id="editEmailUserID" style="display:none">
@@ -227,7 +257,7 @@
             </form>
         </div>
         <!-- update password -->
-        <div class="edit-window-magic-school edit-password-window-magic-school" style="position: fixed; left:50%; top:100px; transform: translate(-50%);z-index:2;display:none;z-index:4">
+        <div class="edit-window-magic-school edit-password-window-magic-school" style="position: fixed; left:50%; top:100px; transform: translate(-50%);display:none;z-index:10">
             <form method="post"  class="d-flex justify-content-between w-100 h-100" autocomplete="off" action="${pageContext.request.contextPath}/Admin/UpdatePassword"
                   style="flex-direction: column;">
                 <p style="font-weight:bold; color:white; font-size:120%;text-align: center;">Change Password</p>
@@ -242,7 +272,7 @@
         </div>
         <!-- delete cat -->
         <div class="edit-window-magic-school delete-cat-window-magic-school"
-             style="position: fixed; left:50%; top:100px; transform: translate(-50%);z-index:2;display:none;z-index:4">
+             style="position: fixed; left:50%; top:100px; transform: translate(-50%);display:none;z-index:10">
             <form method="post" action="${pageContext.request.contextPath}/Admin/DeleteCategory" class="d-flex justify-content-between w-100 h-100"
                   style="flex-direction: column;">
                 <p style="font-weight:bold; color:white; font-size:120%;text-align: center;">Delete Category</p>
@@ -258,7 +288,7 @@
         </div>
         <!-- Edit cat -->
         <div class="edit-window-magic-school edit-cat-window-magic-school"
-             style="position: fixed; left:50%; top:100px; transform: translate(-50%);z-index:2;display:none;z-index:4">
+             style="position: fixed; left:50%; top:100px; transform: translate(-50%);display:none;z-index:10">
             <form method="post"  class="d-flex justify-content-between w-100 h-100"
                   style="flex-direction: column;">
                 <p style="font-weight:bold; color:white; font-size:120%;text-align: center;">Edit Category</p>
@@ -278,7 +308,7 @@
 
         <!-- delete course -->
         <div class="edit-window-magic-school delete-course-window-magic-school"
-             style="position: fixed; left:50%; top:100px; transform: translate(-50%);z-index:2;display:none;z-index:4">
+             style="position: fixed; left:50%; top:100px; transform: translate(-50%);display:none;z-index:10">
             <form method="post" action="${pageContext.request.contextPath}/Admin/DeleteCourse" class="d-flex justify-content-between w-100 h-100"
                   style="flex-direction: column;">
                 <p style="font-weight:bold; color:white; font-size:120%;text-align: center;">Delete Sourse</p>
@@ -295,7 +325,7 @@
 
         <!-- delete teacher -->
         <div class="edit-window-magic-school delete-teacher-window-magic-school"
-             style="position: fixed; left:50%; top:100px; transform: translate(-50%);z-index:2;display:none;z-index:4">
+             style="position: fixed; left:50%; top:100px; transform: translate(-50%);display:none;z-index:10">
             <form method="post" action="${pageContext.request.contextPath}/Admin/DeleteTeacher" class="d-flex justify-content-between w-100 h-100"
                   style="flex-direction: column;">
                 <p style="font-weight:bold; color:white; font-size:120%;text-align: center;">Delete Teacher</p>
@@ -307,12 +337,66 @@
                         style="border-radius: 50px; font-weight: bold;">
                     Delete
                 </button>
-
+            </form>
+        </div>
+<%--        enable use--%>
+        <div class="edit-window-magic-school enable-user-window-magic-school"
+            style="position: fixed; left:50%; top:100px; transform: translate(-50%);display:none;z-index:10">
+            <form method="post" action="${pageContext.request.contextPath}/Admin/UpdateEnableUser">
+                <span style="font-weight:bold; color:white; font-size:120%;text-align: center;">are you sure?</span>
+                <input type="hidden" name="userID" id="userEnableID">
+                <button class="btn p-3 bg-light text-info" type="submit"
+                        style="border-radius: 50px; font-weight: bold;margin: auto">
+                    Yes
+                </button>
+            </form>
+        </div>
+        <%--        disable use--%>
+        <div class="edit-window-magic-school disable-user-window-magic-school"
+             style="position: fixed; left:50%; top:100px; transform: translate(-50%);display:none;z-index:10">
+            <form method="post" action="${pageContext.request.contextPath}/Admin/UpdateDisableUser">
+                <span style="font-weight:bold; color:white; font-size:120%;text-align: center;">are you sure?</span>
+                <input type="hidden" name="userID" id="userDisableID">
+                <button class="btn p-3 bg-light text-info" type="submit"
+                        style="border-radius: 50px; font-weight: bold;margin: auto">
+                    Yes
+                </button>
             </form>
         </div>
 
+
+        <%--        enable course--%>
+        <div class="edit-window-magic-school enable-course-window-magic-school"
+             style="position: fixed; left:50%; top:100px; transform: translate(-50%);display:none;z-index:10">
+            <form method="post" action="${pageContext.request.contextPath}/Admin/UpdateEnableCourse">
+                <span style="font-weight:bold; color:white; font-size:120%;text-align: center;">are you sure?</span>
+                <input type="hidden" name="courseID" id="courseEnableID">
+                <button class="btn p-3 bg-light text-info" type="submit"
+                        style="border-radius: 50px; font-weight: bold;margin: auto">
+                    Yes
+                </button>
+            </form>
+        </div>
+        <%--        disable course--%>
+        <div class="edit-window-magic-school disable-course-window-magic-school"
+             style="position: fixed; left:50%; top:100px; transform: translate(-50%);display:none;z-index:10">
+            <form method="post" action="${pageContext.request.contextPath}/Admin/UpdateDisableCourse">
+                <span style="font-weight:bold; color:white; font-size:120%;text-align: center;">are you sure?</span>
+                <input type="hidden" name="courseID" id="courseDisableID">
+                <button class="btn p-3 bg-light text-info" type="submit"
+                        style="border-radius: 50px; font-weight: bold;margin: auto">
+                    Yes
+                </button>
+            </form>
+        </div>
+
+
+
+
+
+
         <div class="edit-window-magic-school add-teacher-window-magic-school"
-             style="position: fixed; left:50%; top:100px; transform: translate(-50%);z-index:2;display:none;z-index:4">
+             style="position: fixed; left:50%; top:100px; transform: translate(-50%);display:none;z-index:10">
             <form method="post" action="${pageContext.request.contextPath}/Admin/AddTeacher" class="d-flex justify-content-between w-100 h-100"
                   style="flex-direction: column;">
                 <p style="font-weight:bold; color:white; font-size:120%;text-align: center;">Add Teacher</p>
@@ -333,7 +417,7 @@
         </div>
         <%--        update teacher pass--%>
         <div class="edit-window-magic-school edit-teacher-password-window-magic-school "
-             style="position: fixed; left:50%; top:100px; transform: translate(-50%);display: none;z-index: 4;">
+             style="position: fixed; left:50%; top:100px; transform: translate(-50%);display: none;z-index: 10;">
             <p style="font-weight:bold; color:white; font-size:120%;text-align: center;">Update Password</p>
             <form method="post" action="${pageContext.request.contextPath}/Admin/UpdateTeacherPass">
                 <input type="hidden" name="teacherID" id="teacherID" style="display:none">
@@ -348,7 +432,7 @@
 
 
         <hr>
-        <di class="container-fluid" style="background-color:#ecf0f1;overflow: hidden;">
+        <div class="container-fluid" style="background-color:#ecf0f1;overflow: hidden;">
             <div class="circle-1" style="background-color:white;"></div>
             <div class="circle-1" style="background-color:white;width: 100px;height:100px;left: 50%;z-index:0;"></div>
             <div class="circle-1" style="background-color:white;width: 200px;height:200px;left: 40%;z-index:0;"></div>
@@ -359,7 +443,7 @@
             </p>
             <div class="card container-lg-magic-school">
                 <div class="card-header d-flex justify-content-between">
-                    <span style="font-weight: bold;color:#341f97;font-size: 20px;">Categories</span>
+                    <span style="font-weight: bold;color:#341f97;font-size: 20px;" id="category">Categories</span>
                     <div catID="0">
                         <button class="btn add-cat-magic-school" type="button">
                             <i class="fas fa-plus-circle" style="font-size:20px;color:#ff7675"></i>
@@ -393,7 +477,7 @@
                                                 <c:forEach items="${categoriesMenu}" var="cc">
                                                     <c:choose>
                                                         <c:when test="${cc.parentCat == c.id}">
-                                                            <li class="d-flex justify-content-around" style="border-bottom: 1px solid #dfe4ea">
+                                                            <li class="d-flex justify-content-between" style="border-bottom: 1px solid #dfe4ea">
                                                                 <span>${cc.name}</span>
                                                                 <div catID="${cc.id}" catName="${cc.name}">
                                                                     <button type="button" class="btn text-danger delete-cat-magic-school">
@@ -421,7 +505,21 @@
 
             <div class="card container-lg-magic-school mt-5">
                 <div class="card-header d-flex justify-content-between">
-                    <span style="font-weight: bold;color:#341f97;font-size: 20px;">Course</span>
+                    <span style="font-weight: bold;color:#341f97;font-size: 20px;" id="course">Course</span>
+                    <div>
+                        <form method="get">
+                            <label for="teacherSearch">teacher</label>
+                            <input type="text" id="teacherSearch" name="teacherSearch">
+                            <label for="categorySearch">category</label>
+                            <select name="categorySearch" id="categorySearch">
+                                <option value="0">All</option>
+                                <c:forEach var="c" items="${categoriesMenu}">
+                                    <option value="${c.id}">${c.name}</option>
+                                </c:forEach>
+                            </select>
+                            <button type="submit" class="btn btn-outline-secondary">Search</button>
+                        </form>
+                    </div>
                 </div>
                 <div class="card-body ">
                     <table class="table">
@@ -433,6 +531,18 @@
                                         <button type="button" class="btn text-danger delete-course-magic-school">
                                             <i class="fas fa-minus"></i>
                                         </button>
+                                        <c:choose>
+                                            <c:when test="${c.enable.equals('true')}">
+                                                <button class="btn text-info edit-course-disable-magic-school">
+                                                    <i class="fas fa-lock-open"></i>
+                                                </button>
+                                            </c:when>
+                                            <c:otherwise>
+                                                <button class="btn text-danger edit-course-enable-magic-school">
+                                                    <i class="fas fa-lock"></i>
+                                                </button>
+                                            </c:otherwise>
+                                        </c:choose>
                                     </div>
                                 </td>
                             </tr>
@@ -442,10 +552,10 @@
             </div>
 
 
-
+<%--            teacher--%>
             <div class="card container-lg-magic-school my-5">
                 <div class="card-header d-flex justify-content-between">
-                    <span style="font-weight: bold;color:#341f97;font-size: 20px;">Teacher</span>
+                    <span style="font-weight: bold;color:#341f97;font-size: 20px;" id="teacher">Teacher</span>
                 </div>
                 <div class="card-body ">
                     <table class="table">
@@ -481,6 +591,18 @@
                                                 <button class="btn text-info edit-teacher-password-magic-school">password</button>
                                             </div>
                                         </div>
+                                        <c:choose>
+                                            <c:when test="${c.enable.equals('true')}">
+                                                <button class="btn text-info edit-user-disable-magic-school">
+                                                    <i class="fas fa-lock-open"></i>
+                                                </button>
+                                            </c:when>
+                                            <c:otherwise>
+                                                <button class="btn text-danger edit-user-enable-magic-school">
+                                                    <i class="fas fa-lock"></i>
+                                                </button>
+                                            </c:otherwise>
+                                        </c:choose>
                                     </div>
                                 </td>
                             </tr>
@@ -489,7 +611,68 @@
                     </table>
                 </div>
             </div>
-        </di>
+
+
+
+            <div class="card container-lg-magic-school my-5">
+                <div class="card-header d-flex justify-content-between">
+                    <span style="font-weight: bold;color:#341f97;font-size: 20px;" id="student">Student</span>
+                </div>
+                <div class="card-body ">
+                    <table class="table">
+                        <thead>
+                        <tr style="color:#576574">
+                            <th>Username</th>
+                            <th>Full Name</th>
+                            <th>Email</th>
+                            <th style="text-align: right;">
+                                <button class="btn add-teacher-magic-school" style="font-size: 20px;color:#ff7675">
+                                    <i class="fa fa-plus-circle" aria-hidden="true"></i>
+                                </button>
+                            </th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <c:forEach items="${students}" var="c">
+                            <tr>
+                                <td>${c.username}</td>
+                                <td>${c.name}</td>
+                                <td>${c.email}</td>
+                                <td style="text-align: right;">
+                                    <div userID="${c.id}" userName="lamtvu">
+                                        <button type="button" class="btn text-danger delete-teacher-magic-school">
+                                            <i class="fas fa-minus"></i>
+                                        </button>
+                                        <div class="dropdown" style="display:inline">
+                                            <button type="button" class="btn text-warning dropdown-toggle" data-toggle="dropdown">
+                                                <i class="fas fa-pen"></i>
+                                            </button>
+                                            <div class="dropdown-menu" userID="${c.id}">
+                                                <button class="btn text-info edit-teacher-email-magic-school">email</button>
+                                                <button class="btn text-info edit-teacher-password-magic-school">password</button>
+                                            </div>
+                                        </div>
+                                        <c:choose>
+                                            <c:when test="${c.enable.equals('true')}">
+                                                <button class="btn text-info edit-user-disable-magic-school">
+                                                    <i class="fas fa-lock-open"></i>
+                                                </button>
+                                            </c:when>
+                                            <c:otherwise>
+                                                <button class="btn text-danger edit-user-enable-magic-school">
+                                                    <i class="fas fa-lock"></i>
+                                                </button>
+                                            </c:otherwise>
+                                        </c:choose>
+                                    </div>
+                                </td>
+                            </tr>
+                        </c:forEach>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
 
     </jsp:body>
 </t:main>

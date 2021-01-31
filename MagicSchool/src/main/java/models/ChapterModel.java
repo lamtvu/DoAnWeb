@@ -1,10 +1,12 @@
 package models;
 import beans.Chapter;
+import beans.Course;
 import org.sql2o.Connection;
 import utils.DBUtils;
 
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 
 
 public class ChapterModel {
@@ -18,12 +20,13 @@ public class ChapterModel {
     }
     public static void add(Chapter chapter)
     {
-        String sql = "INSERT INTO chapter (name, courseID, publiOrPrivate) VALUES (:name,:courseid,:publiorprivate)";
+        String sql = "INSERT INTO chapter (name, courseID, publiOrPrivate,updateDate) VALUES (:name,:courseid,:publiorprivate,:updateDate)";
         try(Connection conn = DBUtils.getConnection())
         {
             conn.createQuery(sql).addParameter("name",chapter.getName())
                     .addParameter("publiorprivate",chapter.getPubliOrPrivate())
                     .addParameter("courseid",chapter.getCourseID())
+                    .addParameter("updateDate",chapter.getUpdateDate())
                     .executeUpdate();
         }
     }
@@ -48,5 +51,30 @@ public class ChapterModel {
         {
             return conn.createQuery(sql).addParameter("id",id).executeAndFetch(Chapter.class);
         }
+    }
+    public static Optional<Chapter> findByID(int id) {
+        String sql = "select * from chapter where id = :id";
+        try (Connection con = DBUtils.getConnection()) {
+            List<Chapter> list = con.createQuery(sql)
+                    .addParameter("id", id)
+                    .executeAndFetch(Chapter.class);
+            if (list.size() == 0) {
+                return Optional.empty();
+            }
+            return Optional.ofNullable(list.get(0));
+        }
+    }
+    public static void Update(int id,Chapter chapter){
+        String sql ="UPDATE chapter SET  name = :name, courseID = :courseid, publiOrPrivate = :publiorprivate, updateDate = :updatedate WHERE id = :id ";
+
+        try (Connection  conn = DBUtils.getConnection()){
+            conn.createQuery(sql)
+                    .addParameter("name",chapter.getName())
+                    .addParameter("publiorprivate",chapter.getPubliOrPrivate())
+                    .addParameter("updateDate",chapter.getUpdateDate())
+                    .addParameter("id",chapter.getId())
+                    .executeUpdate();
+        }
+
     }
 }

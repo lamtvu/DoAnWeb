@@ -7,10 +7,10 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<jsp:useBean id="categoriesMenu" type="java.util.List<beans.Category>" scope="request"/>;
+<jsp:useBean id="categoriesMenu" type="java.util.List<beans.Category>" scope="request"/>
 
 <footer>
-    <div class="border-top border-secondary mt-4">
+    <div class="border-top border-secondary m-0 position-relative">
         <div class="container mt-3">
             <div class="row justify-content-start">
                 <div class="col-4 d-flex flex-column ">
@@ -21,7 +21,6 @@
                         </c:when>
                     </c:choose>
                     </c:forEach>
-
                 </div>
                 <div class="col-4 d-flex flex-column">
                     <a class="text-success" href="#">Careers</a>

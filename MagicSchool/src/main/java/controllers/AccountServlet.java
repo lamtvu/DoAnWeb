@@ -31,7 +31,9 @@ public class AccountServlet extends HttpServlet {
             case "/Logout":
                 PostLogout(request,response);
                 break;
-
+            default:
+                ServletUtils.redirect("/NotFound",request,response);
+                break;
         }
     }
     private void PostLogout(HttpServletRequest request,HttpServletResponse response) throws IOException {
@@ -39,29 +41,40 @@ public class AccountServlet extends HttpServlet {
         session.setAttribute("auth",null);
         session.setAttribute("authUser",new User());
 
-        ServletUtils.redirect("/Account/Login",request,response);
-//        String url = request.getHeader("referer");
-//        if(url == null) url="/Home/Index";
-//        ServletUtils.redirect(url,request,response);
+//        ServletUtils.redirect("/Account/Login",request,response);
+        String url = request.getHeader("referer");
+        if(url == null) url="/Home/Index";
+        ServletUtils.redirect(url,request,response);
     }
     private  void postLogin(HttpServletRequest request,HttpServletResponse response) throws IOException, ServletException {
         String username = request.getParameter("username");
         String password = request.getParameter("password");
         Optional<User> user = UserModel.FindByUserName(username);
         if(user.isPresent()){
-            BCrypt.Result result = BCrypt.verifyer().verify(password.toCharArray(),user.get().getPassword());
-            if (result.verified){
-                HttpSession session = request.getSession();
-                session.setAttribute("auth",true);
-                session.setAttribute("authUser",user.get());
-                ServletUtils.redirect("/Home/Index",request,response);
-            }
-            else {
+            System.out.println(user.get().getEnable());
+            if(user.get().getEnable().equals("false")){
                 request.setAttribute("hasError",true);
-                request.setAttribute("errorMessage","Invalid Password");
+                request.setAttribute("errorMessage","username is disable");
                 ServletUtils.forward("/views/vwAccount/login.jsp",request,response);
             }
+            else{
+                BCrypt.Result result = BCrypt.verifyer().verify(password.toCharArray(),user.get().getPassword());
+                if (result.verified){
+                    HttpSession session = request.getSession();
+                    session.setAttribute("auth",true);
+                    session.setAttribute("authUser",user.get());
 
+                    String url = (String) session.getAttribute("retUrl");
+                    if (url == null) url = "/Home";
+                    ServletUtils.redirect(url, request, response);
+                }
+                else {
+                    request.setAttribute("hasError",true);
+                    request.setAttribute("errorMessage","Invalid Password");
+                    ServletUtils.forward("/views/vwAccount/login.jsp",request,response);
+                }
+
+            }
         }
         else {
             request.setAttribute("hasError",true);
@@ -77,7 +90,7 @@ public class AccountServlet extends HttpServlet {
        String bcryptHashString = BCrypt.withDefaults().hashToString(12, password.toCharArray());
        String name = request.getParameter("name");
        String email = request.getParameter("email");
-        UserModel.Add(new User(-1,username,bcryptHashString,name,email,"student"));
+        UserModel.Add(new User(-1,username,bcryptHashString,name,email,"student","true",""));
     }
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String path = request.getPathInfo();

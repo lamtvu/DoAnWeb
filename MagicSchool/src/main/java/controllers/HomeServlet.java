@@ -4,6 +4,7 @@ import beans.Category;
 import beans.Course;
 import beans.Evaluate;
 import beans.User;
+import models.CategoryModel;
 import models.CourseModel;
 import utils.ServletUtils;
 
@@ -37,7 +38,8 @@ public class HomeServlet extends HttpServlet {
 //                }
                 List<Map<String,Object>> list1 = CourseModel.GetFetureCourse();
                 request.setAttribute("coursesFeature",list1);
-
+                List<Map<String,Object>> TopCat = CategoryModel.GetTopCat();
+                request.setAttribute("topCat",TopCat);
                 ServletUtils.forward("/views/vwHome/Index.jsp",request,response);
                 break;
             default:

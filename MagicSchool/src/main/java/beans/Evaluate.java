@@ -1,15 +1,27 @@
 package beans;
 
+import java.util.Date;
+
 public class Evaluate {
     int userID,courseID,point;
+    Date date;
 
     public Evaluate() {
     }
 
-    public Evaluate(int userID, int courseID, int point) {
+    public void setDate(Date date) {
+        this.date = date;
+    }
+
+    public Date getDate() {
+        return date;
+    }
+
+    public Evaluate(int userID, int courseID, int point, Date date) {
         this.userID = userID;
         this.courseID = courseID;
         this.point = point;
+        this.date = date;
     }
 
     public int getUserID() {

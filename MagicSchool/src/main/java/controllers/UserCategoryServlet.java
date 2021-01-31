@@ -9,6 +9,8 @@ import javax.servlet.*;
 import javax.servlet.http.*;
 import javax.servlet.annotation.*;
 import java.io.IOException;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 @WebServlet(name = "UserCategoryServlet", urlPatterns = "/User/*")
@@ -21,6 +23,7 @@ public class UserCategoryServlet extends HttpServlet {
         }
         HttpSession session = request.getSession();
         User user = (User) session.getAttribute("authUser");
+        Date date = Calendar.getInstance().getTime();
         switch (path) {
             case "/MyCourse":
 //                HttpSession session = request.getSession();
@@ -32,9 +35,9 @@ public class UserCategoryServlet extends HttpServlet {
                 break;
             case"/AddToMyCourse":
                 int idCourseBuy = Integer.parseInt(request.getParameter("id"));
-                Ownlist cart = new Ownlist(-1,user.getId(),idCourseBuy);
+                Ownlist cart = new Ownlist(-1,user.getId(),idCourseBuy,date);
                 UserModel.addCourse(cart);
-                ServletUtils.redirect("/User/MyCourse",request,response);
+                ServletUtils.redirect("/Course/Detail?"+request.getQueryString(),request,response);
                 break;
             case"/MyWatchList":
 
@@ -45,19 +48,18 @@ public class UserCategoryServlet extends HttpServlet {
             case"/AddWatchList":
                 int idCourse = Integer.parseInt(request.getParameter("id"));
 //                System.out.println(idCourse);
-                Ownlist ownl = new Ownlist(-1,user.getId(),idCourse);
+                Ownlist ownl = new Ownlist(-1,user.getId(),idCourse,date);
 //                System.out.println(user.getId());
                 UserModel.add(ownl);
-                ServletUtils.redirect("/User/MyWatchList",request,response);
+                ServletUtils.redirect("/Course/Detail?"+request.getQueryString(),request,response);
                 break;
             case"/DeleteWatchList":
                 int idCourseDelete = Integer.parseInt(request.getParameter("id"));
 
-                Watchlist wld = new Watchlist(-1,user.getId(),idCourseDelete);
+                Watchlist wld = new Watchlist(-1,user.getId(),idCourseDelete,date);
 
                 UserModel.delete(wld);
-
-                ServletUtils.redirect("/User/MyWatchList",request,response);
+                ServletUtils.redirect("/Course/Detail?"+request.getQueryString(),request,response);
                 break;
 
             default:

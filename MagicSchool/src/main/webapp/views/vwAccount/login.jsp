@@ -56,8 +56,10 @@
             </div>
 
             <br>
-            <button type="submit" class="color-lightgray-magic-school w-50 btn-magic-school p-3"
+            <button type="submit" class="btn btn-light w-50 btn-magic-school p-3"
                     style="margin-left:25%;border-radius: 50px;font-weight: bold; background-color: white;">Login</button>
+            <a class="btn btn-light w-50 btn-magic-school mt-4 p-3" href="${pageContext.request.contextPath}/Home/Index"
+                    style="margin-left:25%;border-radius: 50px;font-weight: bold; background-color: white;">Home</a>
         </form>
     </div>
 </div>

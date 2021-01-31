@@ -10,7 +10,7 @@ import java.util.List;
 
 public class UserModel {
     public static void Add(User user){
-        String sql = "insert into users(username,password,name,email,office) values(:username,:password,:name,:email,:office)";
+        String sql = "INSERT INTO users ( username, password, name, email, information, office, enable) VALUES (:username,:password,:name,:email,:information,:office,:enable)";
         try(Connection conn = DBUtils.getConnection())
         {
             conn.createQuery(sql)
@@ -19,6 +19,8 @@ public class UserModel {
                     .addParameter("name",user.getName())
                     .addParameter("email",user.getEmail())
                     .addParameter("office",user.getOffice())
+                    .addParameter("information",user.getInformation())
+                    .addParameter("enable",user.getEnable())
                     .executeUpdate();
         }
     }
@@ -83,22 +85,24 @@ public class UserModel {
     }
 
     public static void add(Ownlist wl){
-        final String sql="INSERT INTO watchlist (userID, courseID) VALUES (:userID,:courseID)";
+        final String sql="INSERT INTO watchlist (userID, courseID, date) VALUES (:userID,:courseID,:date)";
         try (Connection con = DBUtils.getConnection()) {
             con.createQuery(sql)
                     .addParameter("userID", wl.getUserID())
                     .addParameter("courseID",wl.getCourseID())
+                    .addParameter("date",wl.getDate())
                     .executeUpdate();
         }
     }
 
 
     public static void addCourse(Ownlist c){
-        final String sql="INSERT INTO ownlist (userID, courseID) VALUES (:userID,:courseID)";
+        final String sql="INSERT INTO ownlist (userID, courseID, date) VALUES (:userID,:courseID,:date)";
         try (Connection con = DBUtils.getConnection()) {
             con.createQuery(sql)
                     .addParameter("userID", c.getUserID())
                     .addParameter("courseID",c.getCourseID())
+                    .addParameter("date",c.getDate())
                     .executeUpdate();
         }
 
@@ -152,10 +156,22 @@ public class UserModel {
             conn.createQuery(sql).addParameter("id",id).addParameter("password",bcryptHashString).executeUpdate();
         }
     }
-
-
-
-
-
-
+    public static void UpdateInformation(int id,String information){
+        String sql = "Update users set information=:information where id=:id";
+        try(Connection conn = DBUtils.getConnection()){
+            conn.createQuery(sql).addParameter("information",information).addParameter("id",id).executeUpdate();
+        }
+    }
+    public static void Enable(int id){
+        String sql ="Update users set enable='true' where id=:id";
+        try(Connection conn = DBUtils.getConnection()){
+            conn.createQuery(sql).addParameter("id",id).executeUpdate();
+        }
+    }
+    public static void Disabled(int id){
+        String sql ="Update users set enable='false' where id=:id";
+        try(Connection conn = DBUtils.getConnection()){
+            conn.createQuery(sql).addParameter("id",id).executeUpdate();
+        }
+    }
 }

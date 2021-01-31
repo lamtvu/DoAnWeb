@@ -29,10 +29,11 @@ public class CategoryServlet extends HttpServlet {
             case "/HasCourse":
                 int catID = Integer.parseInt(request.getParameter("catID"));
                 List<Course> list = CourseModel.findByCatID(catID);
+                List<Course> list2 = CourseModel.findByMainCatID(catID);
                 PrintWriter outp = response.getWriter();
                 response.setContentType("application/json");
                 response.setCharacterEncoding("utf-8");
-                if(list.size() == 0)
+                if(list.size() == 0 && list2.size() == 0)
                     outp.print(false);
                 else
                     outp.print(true);

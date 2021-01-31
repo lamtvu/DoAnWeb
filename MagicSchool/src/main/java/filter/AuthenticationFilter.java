@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
-@WebFilter(filterName = "AuthenticationFilter",urlPatterns={"/Teacher/*","/Student/*","/Admin/*","/User/*"})
+@WebFilter(filterName = "AuthenticationFilter")
 public class AuthenticationFilter implements Filter {
   public void destroy() {
   }
@@ -20,7 +20,8 @@ public class AuthenticationFilter implements Filter {
     boolean auth = (boolean) session.getAttribute("auth");
     if (auth == false) {
       // System.out.println(request.getRequestURI());
-      session.setAttribute("retUrl", request.getRequestURI());
+//      session.setAttribute("retUrl", request.getRequestURI());
+      session.setAttribute("retUrl",request.getRequestURI()+"?"+request.getQueryString());
       ServletUtils.redirect("/Account/Login", request, (HttpServletResponse) resp);
       return;
     }

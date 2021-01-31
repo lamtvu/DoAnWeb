@@ -1,17 +1,29 @@
 package beans;
 
+import java.util.Date;
+
 public class Chapter {
     int id,courseID;
     String name,publiOrPrivate ;
+    Date updateDate;
 
-    public Chapter() {
-    }
-
-    public Chapter(int id, int courseID, String name, String publiOrPrivate) {
+    public Chapter(int id, int courseID, String name, String publiOrPrivate, Date updateDate) {
         this.id = id;
         this.courseID = courseID;
         this.name = name;
         this.publiOrPrivate = publiOrPrivate;
+        this.updateDate = updateDate;
+    }
+
+    public Chapter() {
+    }
+
+    public void setUpdateDate(Date updateDate) {
+        this.updateDate = updateDate;
+    }
+
+    public Date getUpdateDate() {
+        return updateDate;
     }
 
     public void setId(int id) {

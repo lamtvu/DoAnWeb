@@ -2,18 +2,37 @@ package beans;
 
 public class User {
     int id;
-    String username,password,name,email,office;
+    String username,password,name,email,office,enable,information;
+
 
     public User() {
     }
 
-    public User(int id, String username, String password, String name, String email, String office) {
+    public User(int id, String username, String password, String name, String email, String office, String enable, String information) {
         this.id = id;
         this.username = username;
         this.password = password;
         this.name = name;
         this.email = email;
         this.office = office;
+        this.enable = enable;
+        this.information = information;
+    }
+
+    public void setEnable(String enable) {
+        this.enable = enable;
+    }
+
+    public void setInformation(String information) {
+        this.information = information;
+    }
+
+    public String getEnable() {
+        return enable;
+    }
+
+    public String getInformation() {
+        return information;
     }
 
     public int getId() {
