@@ -12,7 +12,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <link rel="shortcut icon" href="${pageContext.request.contextPath}/public/imgs/logo.PNG" type="image/x-icon" />
+    <title>MagicSchool</title>
     <link rel="stylesheet" href="${pageContext.request.contextPath}/webjars/bootstrap/5.0.0-beta1/css/bootstrap.min.css"/>
     <link rel="stylesheet" href="${pageContext.request.contextPath}/public/css/main.css">
 </head>

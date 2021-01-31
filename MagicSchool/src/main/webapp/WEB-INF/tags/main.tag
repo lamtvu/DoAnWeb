@@ -7,7 +7,8 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/all.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/css/bootstrap.min.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/public/css/main.css"/>
-    <title>Title</title>
+    <link rel="shortcut icon" href="${pageContext.request.contextPath}/public/imgs/logo.PNG" type="image/x-icon" />
+    <title>MagicSchool</title>
     <jsp:invoke fragment="css"/>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
 </head>
